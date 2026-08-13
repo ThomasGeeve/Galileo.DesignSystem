@@ -36,6 +36,20 @@
     }
   }
 
+  function isTableRowInteractiveElement(element) {
+    return element.closest(
+      'a, button, input, select, textarea, summary, [data-gds-table-row-ignore]'
+    ) !== null;
+  }
+
+  function openTableRowLink(row) {
+    const link = row.querySelector('a[href]');
+
+    if (link) {
+      link.click();
+    }
+  }
+
   document.addEventListener('click', function (event) {
     if (!(event.target instanceof Element)) {
       return;
@@ -62,6 +76,12 @@
         closeDialog(dialog);
         return;
       }
+    }
+
+    const tableRow = event.target.closest('tr[data-gds-table-row-link]');
+    if (tableRow && !isTableRowInteractiveElement(event.target)) {
+      openTableRowLink(tableRow);
+      return;
     }
 
     const dialog = event.target;

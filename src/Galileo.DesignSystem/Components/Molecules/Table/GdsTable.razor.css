@@ -1,0 +1,120 @@
+.gds-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--gds-color-surface);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-lg);
+  box-shadow: var(--gds-shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+.gds-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--gds-font-size-md);
+  text-align: left;
+}
+
+.gds-table caption {
+  padding: var(--gds-space-5) var(--gds-space-6);
+  font-size: var(--gds-font-size-title);
+  font-weight: var(--gds-font-weight-bold);
+  color: var(--gds-color-text);
+  text-align: left;
+  background-color: var(--gds-color-surface);
+  border-bottom: 1px solid var(--gds-color-border);
+}
+
+.gds-table ::deep th,
+.gds-table ::deep td {
+  padding: var(--gds-space-4) var(--gds-space-6);
+  border-bottom: 1px solid var(--gds-color-border);
+  vertical-align: middle;
+}
+
+.gds-table ::deep thead th {
+  padding-top: var(--gds-space-3);
+  padding-bottom: var(--gds-space-3);
+  font-size: var(--gds-font-size-sm);
+  font-weight: var(--gds-font-weight-bold);
+  letter-spacing: 0.02em;
+  color: var(--gds-color-text-muted);
+  background-color: var(--gds-color-surface-hover);
+  white-space: nowrap;
+}
+
+.gds-table ::deep tbody th {
+  font-weight: var(--gds-font-weight-medium);
+}
+
+.gds-table ::deep tbody tr {
+  background-color: var(--gds-color-surface);
+  transition: background-color var(--gds-transition);
+}
+
+.gds-table ::deep tbody tr[data-gds-table-row-link] {
+  cursor: pointer;
+}
+
+.gds-table ::deep tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--gds-color-surface-hover) 42%, var(--gds-color-surface));
+}
+
+.gds-table ::deep tbody tr:hover {
+  background-color: color-mix(in srgb, var(--gds-color-primary) 6%, var(--gds-color-surface));
+}
+
+.gds-table ::deep tbody tr:focus-within {
+  background-color: color-mix(in srgb, var(--gds-color-primary) 10%, var(--gds-color-surface));
+}
+
+.gds-table ::deep a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gds-table ::deep button {
+  color: var(--gds-color-primary);
+}
+
+.gds-table ::deep a:focus-visible,
+.gds-table ::deep button:focus-visible {
+  outline: 3px solid var(--gds-color-focus);
+  outline-offset: 2px;
+}
+
+.gds-table ::deep tbody tr:last-child th,
+.gds-table ::deep tbody tr:last-child td,
+.gds-table ::deep tfoot th,
+.gds-table ::deep tfoot td {
+  border-bottom: 0;
+}
+
+.gds-table ::deep tfoot {
+  font-weight: var(--gds-font-weight-medium);
+  background-color: var(--gds-color-surface-hover);
+}
+
+.gds-table ::deep tfoot th,
+.gds-table ::deep tfoot td {
+  padding-top: var(--gds-space-3);
+  padding-bottom: var(--gds-space-3);
+}
+
+@media (max-width: 40rem) {
+  .gds-table {
+    min-width: 32rem;
+  }
+
+  .gds-table caption {
+    padding-right: var(--gds-space-4);
+    padding-left: var(--gds-space-4);
+  }
+
+  .gds-table ::deep th,
+  .gds-table ::deep td {
+    padding: var(--gds-space-3) var(--gds-space-4);
+  }
+}

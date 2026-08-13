@@ -1,0 +1,57 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+
+<Showcase Title="Table" Description="Een semantische presentatietabel met native table-markup en responsive horizontale scroll." Source="@Source">
+    <GdsTable Caption="Gebruikers">
+        <thead>
+            <tr>
+                <th scope="col">Naam</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-gds-table-row-link>
+                <th scope="row"><a href="/Home/Molecules?user=1">Ada Lovelace</a></th>
+                <td>ada@example.com</td>
+                <td>Designer</td>
+                <td>Actief</td>
+            </tr>
+            <tr data-gds-table-row-link>
+                <th scope="row"><a href="/Home/Molecules?user=2">Alan Turing</a></th>
+                <td>alan@example.com</td>
+                <td>Developer</td>
+                <td>Actief</td>
+            </tr>
+            <tr>
+                <th scope="row">Grace Hopper</th>
+                <td>grace@example.com</td>
+                <td>Product owner</td>
+                <td>Uitgenodigd</td>
+            </tr>
+        </tbody>
+    </GdsTable>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsTable Caption="Gebruikers">
+            <thead>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-gds-table-row-link>
+                    <th scope="row"><a href="/Home/Molecules?user=1">Ada Lovelace</a></th>
+                    <td>ada@example.com</td>
+                    <td>Designer</td>
+                    <td>Actief</td>
+                </tr>
+            </tbody>
+        </GdsTable>
+        """;
+}
