@@ -1,0 +1,62 @@
+.gds-nav-item {
+  --gds-nav-item-pad-y: var(--gds-space-2);
+  --gds-nav-item-pad-x: var(--gds-space-3);
+  --gds-nav-item-icon: var(--gds-icon-size-md);
+  --gds-nav-item-color: var(--gds-color-text-muted);
+
+  display: flex;
+  align-items: center;
+  gap: var(--gds-space-3);
+  width: 100%;
+  padding: var(--gds-nav-item-pad-y) var(--gds-nav-item-pad-x);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-md);
+  font-weight: var(--gds-font-weight-medium);
+  line-height: 1;
+  color: var(--gds-nav-item-color);
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--gds-radius-md);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    color var(--gds-transition),
+    background-color var(--gds-transition);
+}
+
+.gds-nav-item:hover {
+  color: var(--gds-color-text);
+  background-color: var(--gds-color-surface-hover);
+}
+
+.gds-nav-item:active {
+  background-color: var(--gds-color-surface-active);
+}
+
+.gds-nav-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--gds-color-focus);
+}
+
+.gds-nav-item--active {
+  color: var(--gds-color-primary);
+  background-color: var(--gds-color-surface-active);
+}
+
+.gds-nav-item--active:hover {
+  color: var(--gds-color-primary);
+  background-color: var(--gds-color-secondary-hover);
+}
+
+.gds-nav-item .gds-nav-item__icon {
+  width: var(--gds-nav-item-icon);
+  height: var(--gds-nav-item-icon);
+  flex-shrink: 0;
+}
+
+.gds-nav-item__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

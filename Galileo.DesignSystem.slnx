@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Galileo.DesignSystem.Demo/Galileo.DesignSystem.Demo.csproj" />
+    <Project Path="src/Galileo.DesignSystem/Galileo.DesignSystem.csproj" />
+  </Folder>
+</Solution>

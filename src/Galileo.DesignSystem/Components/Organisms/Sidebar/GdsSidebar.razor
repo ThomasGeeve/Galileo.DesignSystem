@@ -1,0 +1,21 @@
+@namespace Galileo.DesignSystem.Organisms
+
+<aside class="gds-sidebar" @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrWhiteSpace(Title))
+    {
+        <GdsText Type="@TextType.Title" ClassName="gds-sidebar__title">
+            @Title
+        </GdsText>
+    }
+    <nav class="gds-sidebar__nav">
+        @ChildContent
+    </nav>
+</aside>
+
+@code {
+    [Parameter] public string? Title { get; set; }
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}

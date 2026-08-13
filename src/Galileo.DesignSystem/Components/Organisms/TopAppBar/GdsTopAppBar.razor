@@ -1,0 +1,27 @@
+@namespace Galileo.DesignSystem.Organisms
+
+<header class="gds-top-app-bar" @attributes="AdditionalAttributes">
+    <div class="gds-top-app-bar__heading">
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <span class="gds-top-app-bar__title">@Title</span>
+        }
+        @if (!string.IsNullOrWhiteSpace(Subtitle))
+        {
+            <span class="gds-top-app-bar__subtitle">@Subtitle</span>
+        }
+    </div>
+    <div class="gds-top-app-bar__actions">
+        @ChildContent
+    </div>
+</header>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    [Parameter] public string? Title { get; set; }
+
+    [Parameter] public string? Subtitle { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}

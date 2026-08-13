@@ -1,0 +1,21 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Home
+
+<DemoShell>
+    <GdsText Type="@TextType.Display">Galileo Design System</GdsText>
+    <GdsText Type="@TextType.Body">
+        Een static-rendered pattern library voor MVC-applicaties, opgebouwd uit Razor Components.
+    </GdsText>
+
+    <section class="demo-intro">
+        <GdsText Type="@TextType.Title">Pattern library</GdsText>
+        <GdsText Type="@TextType.Body">
+            Bekijk de componenten per atomic-design-laag. Elke overview laat de beschikbare varianten en states zien.
+        </GdsText>
+
+        <div class="demo-actions">
+            <GdsButton Href="/Home/Atoms">Bekijk atoms</GdsButton>
+            <GdsButton Href="/Home/Molecules" Type="@ButtonType.Outline">Bekijk molecules</GdsButton>
+            <GdsButton Href="/Home/Organisms" Type="@ButtonType.Elevated">Bekijk organisms</GdsButton>
+        </div>
+    </section>
+</DemoShell>

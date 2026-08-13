@@ -1,0 +1,62 @@
+@namespace Galileo.DesignSystem.Atoms
+
+@if (!string.IsNullOrWhiteSpace(Href))
+{
+    <a href="@Href"
+        class="@CssClass"
+        target="@Target"
+        rel="@Rel"
+        aria-disabled="@(Disabled ? "true" : null)"
+        @attributes="AdditionalAttributes">
+        @IconMarkup
+        @ChildContent
+    </a>
+}
+else
+{
+    <button type="@HtmlTypeAttribute"
+            class="@CssClass"
+            disabled="@(Disabled ? "disabled" : null)"
+            @attributes="AdditionalAttributes">
+        @IconMarkup
+        @ChildContent
+    </button>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public ButtonType Type { get; set; } = ButtonType.Filled;
+    [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Primary;
+    [Parameter] public ButtonSize Size { get; set; } = ButtonSize.Md;
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? PrefixIcon { get; set; }
+    [Parameter] public string? Href { get; set; }
+    [Parameter] public string HtmlType { get; set; } = "button";
+    [Parameter] public string? Target { get; set; }
+    [Parameter] public string? Rel { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string CssClass => string.Join(' ', new[]
+    {
+        "gds-btn",
+        $"gds-btn--{Type.ToString().ToLowerInvariant()}",
+        $"gds-btn--{Variant.ToString().ToLowerInvariant()}",
+        $"gds-btn--{Size.ToString().ToLowerInvariant()}"
+    });
+
+    private string HtmlTypeAttribute
+    {
+        get
+        {
+            var htmlType = string.IsNullOrWhiteSpace(HtmlType) ? "button" : HtmlType.ToLowerInvariant();
+            return htmlType is "submit" or "reset" or "button" ? htmlType : "button";
+        }
+    }
+
+    private RenderFragment IconMarkup => @<text>
+        @if (!string.IsNullOrWhiteSpace(PrefixIcon))
+        {
+            <GdsIcon Name="@PrefixIcon" ClassName="gds-icon gds-btn__icon" />
+        }
+    </text>;
+}

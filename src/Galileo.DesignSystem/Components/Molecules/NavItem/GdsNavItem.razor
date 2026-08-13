@@ -1,0 +1,42 @@
+@namespace Galileo.DesignSystem.Molecules
+
+@if (!string.IsNullOrWhiteSpace(Link))
+{
+    <a href="@Link" class="@CssClass" aria-current="@(Active ? "page" : null)" @attributes="AdditionalAttributes">
+        @if (!string.IsNullOrWhiteSpace(Icon))
+        {
+            <GdsIcon Name="@Icon" ClassName="gds-icon gds-nav-item__icon" />
+        }
+        @if (!string.IsNullOrWhiteSpace(Text))
+        {
+            <span class="gds-nav-item__label">@Text</span>
+        }
+    </a>
+}
+else
+{
+    <button type="button" class="@CssClass" @attributes="AdditionalAttributes">
+        @if (!string.IsNullOrWhiteSpace(Icon))
+        {
+            <GdsIcon Name="@Icon" ClassName="gds-icon gds-nav-item__icon" />
+        }
+        @if (!string.IsNullOrWhiteSpace(Text))
+        {
+            <span class="gds-nav-item__label">@Text</span>
+        }
+    </button>
+}
+
+@code {
+    [Parameter] public string? Icon { get; set; }
+
+    [Parameter] public string? Text { get; set; }
+
+    [Parameter] public string? Link { get; set; }
+
+    [Parameter] public bool Active { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string CssClass => Active ? "gds-nav-item gds-nav-item--active" : "gds-nav-item";
+}

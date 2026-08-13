@@ -1,0 +1,39 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Button" Description="Buttons voor acties en navigatie." Source="@Source">
+    <div class="demo-row">
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Primary">Primary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Secondary">Secondary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Tertiary">Tertiary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Danger">Danger</GdsButton>
+    </div>
+    <div class="demo-row">
+        <GdsButton Type="@ButtonType.Outline">Outline</GdsButton>
+        <GdsButton Type="@ButtonType.Elevated" PrefixIcon="plus">Nieuw</GdsButton>
+        <GdsButton Disabled="true">Disabled</GdsButton>
+        <GdsButton Href="/Home/Atoms" Target="_blank" Rel="noreferrer">Link</GdsButton>
+    </div>
+    <div class="demo-row">
+        <GdsButton Size="@ButtonSize.Sm">Small</GdsButton>
+        <GdsButton Size="@ButtonSize.Lg">Large</GdsButton>
+        <GdsButton HtmlType="submit">Versturen</GdsButton>
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Primary">Primary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Secondary">Secondary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Tertiary">Tertiary</GdsButton>
+        <GdsButton Type="@ButtonType.Filled" Variant="@ButtonVariant.Danger">Danger</GdsButton>
+
+        <GdsButton Type="@ButtonType.Outline">Outline</GdsButton>
+        <GdsButton Type="@ButtonType.Elevated" PrefixIcon="plus">Nieuw</GdsButton>
+        <GdsButton Disabled="true">Disabled</GdsButton>
+        <GdsButton Href="/Home/Atoms" Target="_blank" Rel="noreferrer">Link</GdsButton>
+
+        <GdsButton Size="@ButtonSize.Sm">Small</GdsButton>
+        <GdsButton Size="@ButtonSize.Lg">Large</GdsButton>
+        <GdsButton HtmlType="submit">Versturen</GdsButton>
+        """;
+}

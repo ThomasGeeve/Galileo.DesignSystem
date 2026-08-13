@@ -1,0 +1,106 @@
+.gds-dialog {
+  width: min(calc(100% - var(--gds-space-8)), 32rem);
+  max-width: 100%;
+  max-height: calc(100dvh - var(--gds-space-8));
+  padding: 0;
+  color: var(--gds-color-text);
+  background: transparent;
+  border: 0;
+  border-radius: var(--gds-radius-lg);
+  box-shadow: none;
+}
+
+.gds-dialog::backdrop {
+  background-color: rgb(17 24 39 / 0.5);
+}
+
+.gds-dialog__surface {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: calc(100dvh - var(--gds-space-8));
+  overflow: hidden;
+  background-color: var(--gds-color-surface);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-lg);
+  box-shadow: var(--gds-shadow-md);
+}
+
+.gds-dialog__header,
+.gds-dialog__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--gds-space-4);
+  padding: var(--gds-space-4) var(--gds-space-6);
+}
+
+.gds-dialog__header {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gds-color-border);
+}
+
+.gds-dialog__title {
+  margin: 0;
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-title);
+  font-weight: var(--gds-font-weight-bold);
+  line-height: 1.2;
+}
+
+.gds-dialog__content {
+  min-height: 0;
+  padding: var(--gds-space-6);
+  overflow-y: auto;
+}
+
+.gds-dialog__footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--gds-color-border);
+}
+
+@media (max-width: 40rem) {
+  .gds-dialog {
+    width: calc(100% - var(--gds-space-4));
+    max-height: calc(100dvh - var(--gds-space-4));
+  }
+
+  .gds-dialog__surface {
+    max-height: calc(100dvh - var(--gds-space-4));
+  }
+
+  .gds-dialog__header,
+  .gds-dialog__footer,
+  .gds-dialog__content {
+    padding-right: var(--gds-space-4);
+    padding-left: var(--gds-space-4);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gds-dialog[open] {
+    animation: gds-dialog-show var(--gds-transition);
+  }
+
+  .gds-dialog[open]::backdrop {
+    animation: gds-dialog-backdrop-show var(--gds-transition);
+  }
+}
+
+@keyframes gds-dialog-show {
+  from {
+    opacity: 0;
+    transform: translateY(var(--gds-space-2));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gds-dialog-backdrop-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

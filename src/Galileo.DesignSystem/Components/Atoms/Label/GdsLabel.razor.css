@@ -1,0 +1,13 @@
+.gds-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--gds-space-1);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-sm);
+  font-weight: var(--gds-font-weight-medium);
+  color: var(--gds-color-text);
+}
+
+.gds-label__required {
+  color: var(--gds-color-danger);
+}

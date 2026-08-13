@@ -1,0 +1,44 @@
+@namespace Galileo.DesignSystem.Demo.Components
+@inject NavigationManager Navigation
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galileo Design System</title>
+    <link rel="stylesheet" href="/_content/Galileo.DesignSystem/css/design-system.css" />
+    <link rel="stylesheet" href="/_content/Galileo.DesignSystem/Galileo.DesignSystem.bundle.scp.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <GdsAppShell Title="Galileo Design System" Subtitle="Pattern library" NavTitle="Navigation">
+        <NavItems>
+            <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="@IsActive("/Home/Index")" />
+            <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" Active="@IsActive("/Home/Atoms")" />
+            <GdsNavItem Icon="layers" Text="Molecules" Link="/Home/Molecules" Active="@IsActive("/Home/Molecules")" />
+            <GdsNavItem Icon="layers" Text="Organisms" Link="/Home/Organisms" Active="@IsActive("/Home/Organisms")" />
+        </NavItems>
+
+        <Actions>
+            <GdsIconButton Icon="search" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Zoeken" Href="/Home/Atoms" />
+            <GdsIconButton Icon="settings" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Instellingen" Href="/Home/Organisms" />
+        </Actions>
+
+        <ChildContent>
+            @ChildContent
+        </ChildContent>
+    </GdsAppShell>
+    <script defer src="/_content/Galileo.DesignSystem/js/design-system.js"></script>
+</body>
+</html>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool IsActive(string path)
+    {
+        var currentPath = new Uri(Navigation.Uri).AbsolutePath.TrimEnd('/');
+        return string.Equals(currentPath.Length == 0 ? "/" : currentPath, path, StringComparison.OrdinalIgnoreCase);
+    }
+}

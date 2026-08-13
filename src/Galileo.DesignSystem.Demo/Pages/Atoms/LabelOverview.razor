@@ -1,0 +1,20 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Label" Description="Labels koppelen tekst aan native form controls." Source="@Source">
+    <div class="demo-form-stack">
+        <GdsLabel Text="Naam" For="label-name" />
+        <GdsInput Id="label-name" Name="name" Placeholder="Voorbeeld" />
+        <GdsLabel Text="Verplicht veld" For="label-required" Required="true" />
+        <GdsInput Id="label-required" Name="required" Required="true" />
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsLabel Text="Naam" For="label-name" />
+        <GdsInput Id="label-name" Name="name" Placeholder="Voorbeeld" />
+
+        <GdsLabel Text="Verplicht veld" For="label-required" Required="true" />
+        <GdsInput Id="label-required" Name="required" Required="true" />
+        """;
+}

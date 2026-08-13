@@ -1,0 +1,19 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Textarea" Description="Native textarea-elementen voor langere tekst met consistente sizing en passthrough-attributen." Source="@Source">
+    <div class="demo-form-stack">
+        <GdsTextarea Name="small" Placeholder="Small" Rows="3" Size="@InputSize.Sm" />
+        <GdsTextarea Name="medium" Placeholder="Medium" Rows="4" Size="@InputSize.Md" />
+        <GdsTextarea Name="large" Placeholder="Large" Rows="5" Size="@InputSize.Lg" />
+        <GdsTextarea Name="description" Placeholder="Beschrijf het probleem" Required="true" />
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsTextarea Name="small" Placeholder="Small" Rows="3" Size="@InputSize.Sm" />
+        <GdsTextarea Name="medium" Placeholder="Medium" Rows="4" Size="@InputSize.Md" />
+        <GdsTextarea Name="large" Placeholder="Large" Rows="5" Size="@InputSize.Lg" />
+        <GdsTextarea Name="description" Placeholder="Beschrijf het probleem" Required="true" />
+        """;
+}

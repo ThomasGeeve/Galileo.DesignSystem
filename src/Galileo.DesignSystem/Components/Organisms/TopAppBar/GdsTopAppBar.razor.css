@@ -1,0 +1,44 @@
+.gds-top-app-bar {
+  --gds-top-app-bar-height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gds-space-4);
+  min-height: var(--gds-top-app-bar-height);
+  padding: 0 var(--gds-space-6);
+  background-color: var(--gds-color-surface);
+  border-bottom: 1px solid var(--gds-color-border);
+  box-shadow: var(--gds-shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.gds-top-app-bar__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gds-space-1);
+  min-width: 0;
+}
+
+.gds-top-app-bar__title {
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-title);
+  font-weight: var(--gds-font-weight-bold);
+  color: var(--gds-color-text);
+  line-height: 1.2;
+}
+
+.gds-top-app-bar__subtitle {
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-sm);
+  font-weight: var(--gds-font-weight-normal);
+  color: var(--gds-color-text-muted);
+}
+
+.gds-top-app-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gds-space-2);
+}

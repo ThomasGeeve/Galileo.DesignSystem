@@ -1,0 +1,18 @@
+.gds-app-shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.gds-app-shell__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.gds-app-shell__content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--gds-space-8);
+}

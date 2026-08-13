@@ -1,0 +1,17 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+
+<Showcase Title="Nav item" Description="Navigatie-items combineren een icon, label, link en actieve state." Source="@Source">
+    <nav class="demo-nav-preview" aria-label="Voorbeeld navigatie">
+        <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="true" />
+        <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" />
+        <GdsNavItem Icon="layers" Text="Organisms" Link="/Home/Organisms" />
+    </nav>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="true" />
+        <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" />
+        <GdsNavItem Icon="layers" Text="Organisms" Link="/Home/Organisms" />
+        """;
+}

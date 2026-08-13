@@ -1,0 +1,58 @@
+.gds-input {
+  --gds-control-pad-y: var(--gds-space-2);
+  --gds-control-pad-x: var(--gds-space-3);
+  --gds-control-font-size: var(--gds-font-size-md);
+
+  width: 100%;
+  padding: var(--gds-control-pad-y) var(--gds-control-pad-x);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-control-font-size);
+  color: var(--gds-color-text);
+  background-color: var(--gds-color-surface);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-md);
+  transition:
+    border-color var(--gds-transition),
+    box-shadow var(--gds-transition);
+}
+
+.gds-input::placeholder {
+  color: var(--gds-color-text-muted);
+}
+
+.gds-input:hover {
+  border-color: var(--gds-color-text-muted);
+}
+
+.gds-input:focus-visible {
+  outline: none;
+  border-color: var(--gds-color-primary);
+  box-shadow: 0 0 0 3px var(--gds-color-focus);
+}
+
+.gds-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gds-input:read-only {
+  background-color: var(--gds-color-surface-hover);
+}
+
+.gds-input--sm {
+  --gds-control-pad-y: var(--gds-space-1);
+  --gds-control-pad-x: var(--gds-space-2);
+  --gds-control-font-size: var(--gds-font-size-sm);
+}
+
+.gds-input--md {
+  --gds-control-pad-y: var(--gds-space-2);
+  --gds-control-pad-x: var(--gds-space-3);
+  --gds-control-font-size: var(--gds-font-size-md);
+}
+
+.gds-input--lg {
+  --gds-control-pad-y: var(--gds-space-3);
+  --gds-control-pad-x: var(--gds-space-4);
+  --gds-control-font-size: var(--gds-font-size-lg);
+}

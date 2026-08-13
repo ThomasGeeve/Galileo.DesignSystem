@@ -1,0 +1,24 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Icon button" Description="Een button met alleen een icon en een verplichte toegankelijke naam." Source="@Source">
+    <div class="demo-row">
+        <GdsIconButton Icon="plus" AriaLabel="Toevoegen" />
+        <GdsIconButton Icon="search" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Zoeken" />
+        <GdsIconButton Icon="settings" Type="@IconButtonType.Elevated" AriaLabel="Instellingen" />
+        <GdsIconButton Icon="close" Variant="@IconButtonVariant.Danger" AriaLabel="Sluiten" />
+        <GdsIconButton Icon="menu" Href="/Home/Atoms" AriaLabel="Menu" />
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsIconButton Icon="plus" AriaLabel="Toevoegen" />
+        <GdsIconButton Icon="search"
+                        Type="@IconButtonType.Outline"
+                        Variant="@IconButtonVariant.Secondary"
+                        AriaLabel="Zoeken" />
+        <GdsIconButton Icon="settings" Type="@IconButtonType.Elevated" AriaLabel="Instellingen" />
+        <GdsIconButton Icon="close" Variant="@IconButtonVariant.Danger" AriaLabel="Sluiten" />
+        <GdsIconButton Icon="menu" Href="/Home/Atoms" AriaLabel="Menu" />
+        """;
+}

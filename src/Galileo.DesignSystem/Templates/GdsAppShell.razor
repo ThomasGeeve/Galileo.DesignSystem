@@ -1,0 +1,32 @@
+@namespace Galileo.DesignSystem.Templates
+@using Galileo.DesignSystem.Organisms
+
+<div class="gds-app-shell">
+    <GdsTopAppBar Title="@Title" Subtitle="@Subtitle">
+        @Actions
+    </GdsTopAppBar>
+
+    <div class="gds-app-shell__body">
+        <GdsSidebar Title="@NavTitle">
+            @NavItems
+        </GdsSidebar>
+
+        <main class="gds-app-shell__content" role="main">
+            @ChildContent
+        </main>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? Title { get; set; }
+
+    [Parameter] public string? Subtitle { get; set; }
+
+    [Parameter] public string? NavTitle { get; set; }
+
+    [Parameter] public RenderFragment? NavItems { get; set; }
+
+    [Parameter] public RenderFragment? Actions { get; set; }
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

@@ -1,0 +1,19 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Input" Description="Native input-elementen met consistente sizing en passthrough-attributen." Source="@Source">
+    <div class="demo-form-grid">
+        <GdsInput Name="small" Placeholder="Small" Size="@InputSize.Sm" />
+        <GdsInput Name="medium" Placeholder="Medium" Size="@InputSize.Md" />
+        <GdsInput Name="large" Placeholder="Large" Size="@InputSize.Lg" />
+        <GdsInput Name="email" Type="email" Placeholder="naam@example.com" Required="true" />
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsInput Name="small" Placeholder="Small" Size="@InputSize.Sm" />
+        <GdsInput Name="medium" Placeholder="Medium" Size="@InputSize.Md" />
+        <GdsInput Name="large" Placeholder="Large" Size="@InputSize.Lg" />
+        <GdsInput Name="email" Type="email" Placeholder="naam@example.com" Required="true" />
+        """;
+}

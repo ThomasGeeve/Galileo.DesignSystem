@@ -1,0 +1,19 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Text" Description="Semantische typografie met vaste design-system niveaus." Source="@Source">
+    <GdsText Type="@TextType.Display">Display</GdsText>
+    <GdsText Type="@TextType.Headline">Headline</GdsText>
+    <GdsText Type="@TextType.Title">Title</GdsText>
+    <GdsText Type="@TextType.Body">Body text</GdsText>
+    <GdsText Type="@TextType.Label" Emphasized="true">Label</GdsText>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsText Type="@TextType.Display">Display</GdsText>
+        <GdsText Type="@TextType.Headline">Headline</GdsText>
+        <GdsText Type="@TextType.Title">Title</GdsText>
+        <GdsText Type="@TextType.Body">Body text</GdsText>
+        <GdsText Type="@TextType.Label" Emphasized="true">Label</GdsText>
+        """;
+}

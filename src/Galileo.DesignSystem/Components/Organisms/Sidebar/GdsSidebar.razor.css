@@ -1,0 +1,27 @@
+.gds-sidebar {
+  --gds-sidebar-width: 16rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gds-space-4);
+  width: var(--gds-sidebar-width);
+  padding: var(--gds-space-4);
+  background-color: var(--gds-color-surface);
+  border-right: 1px solid var(--gds-color-border);
+  overflow-y: auto;
+}
+
+.gds-sidebar .gds-sidebar__title {
+  margin: 0;
+  padding: 0 var(--gds-space-3);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-font-size-title);
+  font-weight: var(--gds-font-weight-bold);
+  color: var(--gds-color-text);
+}
+
+.gds-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gds-space-1);
+}

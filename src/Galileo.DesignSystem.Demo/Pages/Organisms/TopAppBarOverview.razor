@@ -1,0 +1,19 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Organisms
+
+<Showcase Title="Top app bar" Description="Een header-organism met titel, subtitle en action-slot." Source="@Source">
+    <div class="demo-organism-preview">
+        <GdsTopAppBar Title="Galileo Design System" Subtitle="Voorbeeld">
+            <GdsIconButton Icon="search" Type="@IconButtonType.Outline" AriaLabel="Zoeken" />
+            <GdsIconButton Icon="settings" Type="@IconButtonType.Outline" AriaLabel="Instellingen" />
+        </GdsTopAppBar>
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsTopAppBar Title="Galileo Design System" Subtitle="Voorbeeld">
+            <GdsIconButton Icon="search" Type="@IconButtonType.Outline" AriaLabel="Zoeken" />
+            <GdsIconButton Icon="settings" Type="@IconButtonType.Outline" AriaLabel="Instellingen" />
+        </GdsTopAppBar>
+        """;
+}

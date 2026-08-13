@@ -1,0 +1,71 @@
+@namespace Galileo.DesignSystem.Atoms
+
+@if (!string.IsNullOrWhiteSpace(Href))
+{
+    <a href="@Href"
+       class="@CssClass"
+       aria-label="@AriaLabel"
+       aria-disabled="@(Disabled ? "true" : null)"
+       @attributes="AdditionalAttributes">
+        <GdsIcon Name="@Icon" ClassName="gds-icon" />
+    </a>
+}
+else
+{
+    <button type="@HtmlTypeAttribute"
+            class="@CssClass"
+            aria-label="@AriaLabel"
+            disabled="@(Disabled ? "disabled" : null)"
+            @attributes="AdditionalAttributes">
+        <GdsIcon Name="@Icon" ClassName="gds-icon" />
+    </button>
+}
+
+@code {
+    [Parameter] public string Icon { get; set; } = string.Empty;
+
+    [Parameter] public string? AriaLabel { get; set; }
+
+    [Parameter] public IconButtonType Type { get; set; } = IconButtonType.Filled;
+
+    [Parameter] public IconButtonVariant Variant { get; set; } = IconButtonVariant.Primary;
+
+    [Parameter] public IconButtonSize Size { get; set; } = IconButtonSize.Md;
+
+    [Parameter] public IconShape? Shape { get; set; }
+
+    [Parameter] public bool Disabled { get; set; }
+
+    [Parameter] public string? Href { get; set; }
+
+    [Parameter] public string HtmlType { get; set; } = "button";
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string CssClass
+    {
+        get
+        {
+            var classes = new List<string>
+            {
+                "gds-icon-btn",
+                $"gds-icon-btn--{Type.ToString().ToLowerInvariant()}",
+                $"gds-icon-btn--{Variant.ToString().ToLowerInvariant()}",
+                $"gds-icon-btn--{Size.ToString().ToLowerInvariant()}"
+            };
+
+            if (Shape is not null)
+                classes.Add($"gds-icon-btn--{Shape.Value.ToString().ToLowerInvariant()}");
+
+            return string.Join(' ', classes);
+        }
+    }
+
+    private string HtmlTypeAttribute
+    {
+        get
+        {
+            var htmlType = string.IsNullOrWhiteSpace(HtmlType) ? "button" : HtmlType.ToLowerInvariant();
+            return htmlType is "submit" or "reset" or "button" ? htmlType : "button";
+        }
+    }
+}

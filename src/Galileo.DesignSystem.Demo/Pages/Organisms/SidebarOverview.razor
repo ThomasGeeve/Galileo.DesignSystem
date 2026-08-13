@@ -1,0 +1,19 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Organisms
+
+<Showcase Title="Sidebar" Description="Een navigatie-organism met een titel en nav items." Source="@Source">
+    <div class="demo-organism-preview">
+        <GdsSidebar Title="Voorbeeld">
+            <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="true" />
+            <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" />
+        </GdsSidebar>
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsSidebar Title="Voorbeeld">
+            <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="true" />
+            <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" />
+        </GdsSidebar>
+        """;
+}

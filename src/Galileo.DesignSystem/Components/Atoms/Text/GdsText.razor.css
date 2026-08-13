@@ -1,0 +1,47 @@
+.gds-text {
+  --gds-text-size: var(--gds-font-size-md);
+
+  margin: 0;
+  color: var(--gds-color-text);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-text-size);
+  font-weight: var(--gds-font-weight-normal);
+}
+
+.gds-text--display {
+  --gds-text-size: var(--gds-font-size-display);
+  font-weight: var(--gds-font-weight-bold);
+}
+
+.gds-text--headline {
+  --gds-text-size: var(--gds-font-size-headline);
+  font-weight: var(--gds-font-weight-bold);
+}
+
+.gds-text--title {
+  --gds-text-size: var(--gds-font-size-title);
+  font-weight: var(--gds-font-weight-medium);
+}
+
+.gds-text--body {
+  --gds-text-size: var(--gds-font-size-md);
+}
+
+.gds-text--label {
+  --gds-text-size: var(--gds-font-size-sm);
+  font-weight: var(--gds-font-weight-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.gds-text--sm {
+  --gds-text-size: var(--gds-font-size-sm);
+}
+
+.gds-text--lg {
+  --gds-text-size: var(--gds-font-size-lg);
+}
+
+.gds-text--emphasized {
+  font-weight: var(--gds-font-weight-bold);
+}

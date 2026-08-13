@@ -1,0 +1,25 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Icon" Description="Inline SVG-iconen uit de lokale icon-map." Source="@Source">
+    <div class="demo-icon-grid">
+        @foreach (var name in Icons)
+        {
+            <div class="demo-icon-item">
+                <GdsIcon Name="@name" Size="@IconSize.Lg" />
+                <span>@name</span>
+            </div>
+        }
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsIcon Name="arrow-right" Size="@IconSize.Lg" />
+        """;
+
+    private static readonly string[] Icons =
+    [
+        "arrow-right", "plus", "check", "close", "menu", "search",
+        "home", "settings", "chevron-left", "chevron-right", "logout"
+    ];
+}

@@ -1,0 +1,20 @@
+.gds-icon {
+  --gds-icon-size-value: var(--gds-icon-size-md);
+
+  width: var(--gds-icon-size-value);
+  height: var(--gds-icon-size-value);
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.gds-icon--sm {
+  --gds-icon-size-value: var(--gds-icon-size-sm);
+}
+
+.gds-icon--md {
+  --gds-icon-size-value: var(--gds-icon-size-md);
+}
+
+.gds-icon--lg {
+  --gds-icon-size-value: var(--gds-icon-size-lg);
+}

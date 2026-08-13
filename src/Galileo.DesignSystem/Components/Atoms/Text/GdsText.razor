@@ -1,0 +1,63 @@
+@namespace Galileo.DesignSystem.Atoms
+
+@if (Type == TextType.Display)
+{
+    <h1 class="@CssClass" @attributes="AdditionalAttributes">@Content</h1>
+}
+else if (Type == TextType.Headline)
+{
+    <h2 class="@CssClass" @attributes="AdditionalAttributes">@Content</h2>
+}
+else if (Type == TextType.Title)
+{
+    <h3 class="@CssClass" @attributes="AdditionalAttributes">@Content</h3>
+}
+else if (Type == TextType.Label)
+{
+    <span class="@CssClass" @attributes="AdditionalAttributes">@Content</span>
+}
+else
+{
+    <p class="@CssClass" @attributes="AdditionalAttributes">@Content</p>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    [Parameter] public string? Text { get; set; }
+
+    [Parameter] public TextType Type { get; set; } = TextType.Body;
+
+    [Parameter] public string? Size { get; set; }
+
+    [Parameter] public bool Emphasized { get; set; }
+
+    [Parameter] public string? ClassName { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private RenderFragment Content => ChildContent ?? (builder => builder.AddContent(0, Text));
+
+    private string CssClass
+    {
+        get
+        {
+            var classes = new List<string>
+            {
+                "gds-text",
+                $"gds-text--{Type.ToString().ToLowerInvariant()}"
+            };
+
+            if (!string.IsNullOrWhiteSpace(Size))
+                classes.Add($"gds-text--{Size!.ToLowerInvariant()}");
+
+            if (Emphasized)
+                classes.Add("gds-text--emphasized");
+
+            if (!string.IsNullOrWhiteSpace(ClassName))
+                classes.Add(ClassName!);
+
+            return string.Join(' ', classes);
+        }
+    }
+}

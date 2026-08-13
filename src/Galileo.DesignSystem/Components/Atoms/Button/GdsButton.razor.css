@@ -1,0 +1,134 @@
+.gds-btn {
+  --gds-btn-accent: var(--gds-color-primary);
+  --gds-btn-accent-hover: var(--gds-color-primary-hover);
+  --gds-btn-accent-active: var(--gds-color-primary-active);
+  --gds-btn-accent-text: var(--gds-color-text-inverse);
+  --gds-btn-border-color: transparent;
+  --gds-btn-pad-y: var(--gds-space-2);
+  --gds-btn-pad-x: var(--gds-space-4);
+  --gds-btn-font-size: var(--gds-font-size-md);
+  --gds-btn-radius: var(--gds-radius-md);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gds-space-2);
+  padding: var(--gds-btn-pad-y) var(--gds-btn-pad-x);
+  font-family: var(--gds-font-sans);
+  font-size: var(--gds-btn-font-size);
+  font-weight: var(--gds-font-weight-medium);
+  line-height: 1;
+  color: var(--gds-btn-accent-text);
+  background-color: var(--gds-btn-accent);
+  border: 1px solid var(--gds-btn-border-color);
+  border-radius: var(--gds-btn-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--gds-transition),
+    color var(--gds-transition),
+    border-color var(--gds-transition),
+    box-shadow var(--gds-transition);
+}
+
+.gds-btn:hover {
+  background-color: var(--gds-btn-accent-hover);
+}
+
+.gds-btn:active {
+  background-color: var(--gds-btn-accent-active);
+}
+
+.gds-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--gds-color-focus);
+}
+
+.gds-btn:disabled,
+.gds-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gds-btn .gds-btn__icon {
+  width: 1em;
+  height: 1em;
+}
+
+.gds-btn--outline {
+  background-color: transparent;
+  color: var(--gds-btn-accent);
+  border-color: var(--gds-btn-accent);
+}
+
+.gds-btn--outline:hover {
+  background-color: color-mix(in srgb, var(--gds-btn-accent) 10%, transparent);
+}
+
+.gds-btn--outline:active {
+  background-color: color-mix(in srgb, var(--gds-btn-accent) 20%, transparent);
+}
+
+.gds-btn--elevated {
+  box-shadow: var(--gds-shadow-sm);
+}
+
+.gds-btn--elevated:hover {
+  box-shadow: var(--gds-shadow-md);
+}
+
+.gds-btn--secondary {
+  --gds-btn-accent: var(--gds-color-secondary);
+  --gds-btn-accent-hover: var(--gds-color-secondary-hover);
+  --gds-btn-accent-active: var(--gds-color-secondary-active);
+  --gds-btn-accent-text: var(--gds-color-text);
+}
+
+.gds-btn--tertiary {
+  --gds-btn-accent: transparent;
+  --gds-btn-accent-hover: var(--gds-color-surface-hover);
+  --gds-btn-accent-active: var(--gds-color-surface-active);
+  --gds-btn-accent-text: var(--gds-color-text);
+  --gds-btn-border-color: var(--gds-color-border);
+}
+
+.gds-btn--danger {
+  --gds-btn-accent: var(--gds-color-danger);
+  --gds-btn-accent-hover: var(--gds-color-danger-hover);
+  --gds-btn-accent-active: var(--gds-color-danger-active);
+}
+
+.gds-btn--outline.gds-btn--secondary,
+.gds-btn--outline.gds-btn--tertiary {
+  color: var(--gds-btn-accent-text);
+  border-color: var(--gds-color-border);
+}
+
+.gds-btn--outline.gds-btn--secondary:hover,
+.gds-btn--outline.gds-btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--gds-color-text) 6%, transparent);
+}
+
+.gds-btn--outline.gds-btn--secondary:active,
+.gds-btn--outline.gds-btn--tertiary:active {
+  background-color: color-mix(in srgb, var(--gds-color-text) 12%, transparent);
+}
+
+.gds-btn--sm {
+  --gds-btn-pad-y: var(--gds-space-1);
+  --gds-btn-pad-x: var(--gds-space-3);
+  --gds-btn-font-size: var(--gds-font-size-sm);
+}
+
+.gds-btn--md {
+  --gds-btn-pad-y: var(--gds-space-2);
+  --gds-btn-pad-x: var(--gds-space-4);
+  --gds-btn-font-size: var(--gds-font-size-md);
+}
+
+.gds-btn--lg {
+  --gds-btn-pad-y: var(--gds-space-3);
+  --gds-btn-pad-x: var(--gds-space-5);
+  --gds-btn-font-size: var(--gds-font-size-lg);
+}

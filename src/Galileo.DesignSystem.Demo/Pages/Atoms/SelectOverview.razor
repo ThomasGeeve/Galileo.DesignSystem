@@ -1,0 +1,21 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Select" Description="Native select-elementen met dezelfde sizing als inputs." Source="@Source">
+    <GdsSelect Name="role" Size="@SelectSize.Md">
+        <option value="">Kies een rol</option>
+        <option value="designer">Designer</option>
+        <option value="developer">Developer</option>
+        <option value="product-owner">Product owner</option>
+    </GdsSelect>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsSelect Name="role" Size="@SelectSize.Md">
+            <option value="">Kies een rol</option>
+            <option value="designer">Designer</option>
+            <option value="developer">Developer</option>
+            <option value="product-owner">Product owner</option>
+        </GdsSelect>
+        """;
+}

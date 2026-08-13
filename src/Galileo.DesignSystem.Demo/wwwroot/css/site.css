@@ -1,0 +1,113 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--gds-font-sans);
+  color: var(--gds-color-text);
+  background-color: var(--gds-color-surface-hover);
+}
+
+.gds-app-shell__content {
+  padding: var(--gds-space-8);
+}
+
+.demo-intro {
+  max-width: 52rem;
+  margin-top: var(--gds-space-8);
+}
+
+.demo-actions,
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gds-space-3);
+  margin-top: var(--gds-space-4);
+}
+
+.showcase {
+  padding: var(--gds-space-6);
+  margin-bottom: var(--gds-space-6);
+  background-color: var(--gds-color-surface);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-lg);
+  box-shadow: var(--gds-shadow-sm);
+}
+
+.showcase__title {
+  margin: 0 0 var(--gds-space-2);
+  font-size: var(--gds-font-size-title);
+}
+
+.showcase__description {
+  margin: 0 0 var(--gds-space-4);
+  color: var(--gds-color-text-muted);
+}
+
+.showcase__demo {
+  display: block;
+}
+
+.demo-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: var(--gds-space-4);
+}
+
+.demo-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gds-space-2);
+  padding: var(--gds-space-4);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-md);
+}
+
+.demo-form-grid,
+.demo-form-stack {
+  display: grid;
+  gap: var(--gds-space-3);
+  max-width: 32rem;
+}
+
+.demo-form-grid {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  max-width: 48rem;
+}
+
+.demo-nav-preview {
+  display: grid;
+  gap: var(--gds-space-2);
+  max-width: 16rem;
+}
+
+.demo-organism-preview {
+  overflow: hidden;
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-md);
+}
+
+.showcase__source {
+  margin-top: var(--gds-space-4);
+}
+
+.showcase__source summary {
+  cursor: pointer;
+  font-weight: var(--gds-font-weight-medium);
+  color: var(--gds-color-primary);
+}
+
+.showcase__source pre {
+  margin: var(--gds-space-2) 0 0;
+  padding: var(--gds-space-4);
+  overflow-x: auto;
+  background-color: var(--gds-color-surface-hover);
+  border-radius: var(--gds-radius-md);
+  font-size: var(--gds-font-size-sm);
+}
