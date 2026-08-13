@@ -1,0 +1,27 @@
+@namespace Galileo.DesignSystem.Atoms
+
+<input class="gds-checkbox"
+       @attributes="AdditionalAttributes"
+       name="@Name"
+       id="@Id"
+       type="checkbox"
+       value="@Value"
+       checked="@(Checked ? "checked" : null)"
+       required="@(Required ? "required" : null)"
+       disabled="@(Disabled ? "disabled" : null)" />
+
+@code {
+    [Parameter] public string? Name { get; set; }
+
+    [Parameter] public string? Id { get; set; }
+
+    [Parameter] public string? Value { get; set; }
+
+    [Parameter] public bool Checked { get; set; }
+
+    [Parameter] public bool Required { get; set; }
+
+    [Parameter] public bool Disabled { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}

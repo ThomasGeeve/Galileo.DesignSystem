@@ -1,0 +1,31 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Checkbox" Description="Native checkbox-inputs voor onafhankelijke keuzes en akkoordverklaringen." Source="@Source">
+    <div class="demo-form-stack">
+        <div class="demo-row">
+            <GdsCheckbox Id="terms" Name="terms" Value="accepted" Required="true" />
+            <GdsLabel For="terms" Text="Ik ga akkoord met de voorwaarden" Required="true" />
+        </div>
+        <div class="demo-row">
+            <GdsCheckbox Id="updates" Name="updates" Value="yes" Checked="true" />
+            <GdsLabel For="updates" Text="Houd mij op de hoogte van updates" />
+        </div>
+        <div class="demo-row">
+            <GdsCheckbox Id="disabled-option" Name="disabled-option" Disabled="true" />
+            <GdsLabel For="disabled-option" Text="Niet beschikbaar" />
+        </div>
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsCheckbox Id="terms" Name="terms" Value="accepted" Required="true" />
+        <GdsLabel For="terms" Text="Ik ga akkoord met de voorwaarden" Required="true" />
+
+        <GdsCheckbox Id="updates" Name="updates" Value="yes" Checked="true" />
+        <GdsLabel For="updates" Text="Houd mij op de hoogte van updates" />
+
+        <GdsCheckbox Id="disabled-option" Name="disabled-option" Disabled="true" />
+        <GdsLabel For="disabled-option" Text="Niet beschikbaar" />
+        """;
+}

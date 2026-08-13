@@ -1,0 +1,18 @@
+.gds-checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  accent-color: var(--gds-color-primary);
+  vertical-align: middle;
+}
+
+.gds-checkbox:focus-visible {
+  outline: none;
+  border-radius: var(--gds-radius-sm);
+  box-shadow: 0 0 0 3px var(--gds-color-focus);
+}
+
+.gds-checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

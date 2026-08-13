@@ -1,0 +1,29 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Atoms
+
+<Showcase Title="Radio" Description="Native radio-inputs voor één keuze binnen een groep met dezelfde naam." Source="@Source">
+    <fieldset class="demo-form-stack">
+        <legend>Hoe wil je gecontacteerd worden?</legend>
+        <div class="demo-row">
+            <GdsRadio Id="contact-email" Name="contact" Value="email" Checked="true" Required="true" />
+            <GdsLabel For="contact-email" Text="E-mail" />
+        </div>
+        <div class="demo-row">
+            <GdsRadio Id="contact-phone" Name="contact" Value="phone" />
+            <GdsLabel For="contact-phone" Text="Telefoon" />
+        </div>
+        <div class="demo-row">
+            <GdsRadio Id="contact-post" Name="contact" Value="post" />
+            <GdsLabel For="contact-post" Text="Post" />
+        </div>
+    </fieldset>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsRadio Id="contact-email" Name="contact" Value="email" Checked="true" Required="true" />
+        <GdsLabel For="contact-email" Text="E-mail" />
+
+        <GdsRadio Id="contact-phone" Name="contact" Value="phone" />
+        <GdsLabel For="contact-phone" Text="Telefoon" />
+        """;
+}
