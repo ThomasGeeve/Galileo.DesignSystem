@@ -1,0 +1,31 @@
+@namespace Galileo.DesignSystem.Molecules
+
+<div class="gds-form-field" @attributes="AdditionalAttributes">
+    @ChildContent
+
+    @if (!string.IsNullOrWhiteSpace(Description))
+    {
+        <p id="@DescriptionId" class="gds-form-field__description">@Description</p>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Error))
+    {
+        <p id="@ErrorId" class="gds-form-field__error" role="alert">@Error</p>
+    }
+</div>
+
+@code {
+    [Parameter] public string? FieldId { get; set; }
+
+    [Parameter] public string? Description { get; set; }
+
+    [Parameter] public string? Error { get; set; }
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string? DescriptionId => string.IsNullOrWhiteSpace(FieldId) ? null : $"{FieldId}-description";
+
+    private string? ErrorId => string.IsNullOrWhiteSpace(FieldId) ? null : $"{FieldId}-error";
+}
