@@ -1,0 +1,18 @@
+.gds-form-field {
+  display: grid;
+  gap: var(--gds-space-2);
+}
+
+.gds-form-field__description,
+.gds-form-field__error {
+  margin: 0;
+  font-size: var(--gds-font-size-sm);
+}
+
+.gds-form-field__description {
+  color: var(--gds-color-text-muted);
+}
+
+.gds-form-field__error {
+  color: var(--gds-color-danger);
+}

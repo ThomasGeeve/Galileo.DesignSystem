@@ -1,0 +1,46 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+
+<Showcase Title="Form field" Description="Een molecule voor consistente spacing rond een label, native form control, helptekst en foutmelding." Source="@Source">
+    <form class="demo-form-stack" method="get" action="/Home/Molecules">
+        <GdsFormField FieldId="email" Description="Gebruik je werk e-mailadres.">
+            <GdsLabel For="email" Text="E-mailadres" Required="true" />
+            <GdsInput Id="email"
+                      Name="email"
+                      Type="email"
+                      Required="true"
+                      aria-describedby="email-description" />
+        </GdsFormField>
+
+        <GdsFormField FieldId="message" Error="Vul een bericht in.">
+            <GdsLabel For="message" Text="Bericht" />
+            <GdsTextarea Id="message"
+                         Name="message"
+                         Rows="4"
+                         aria-describedby="message-error"
+                         aria-invalid="true" />
+        </GdsFormField>
+
+        <GdsButton HtmlType="submit">Versturen</GdsButton>
+    </form>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsFormField FieldId="email" Description="Gebruik je werk e-mailadres.">
+            <GdsLabel For="email" Text="E-mailadres" Required="true" />
+            <GdsInput Id="email"
+                      Name="email"
+                      Type="email"
+                      Required="true"
+                      aria-describedby="email-description" />
+        </GdsFormField>
+
+        <GdsFormField FieldId="message" Error="Vul een bericht in.">
+            <GdsLabel For="message" Text="Bericht" />
+            <GdsTextarea Id="message"
+                         Name="message"
+                         aria-describedby="message-error"
+                         aria-invalid="true" />
+        </GdsFormField>
+        """;
+}
