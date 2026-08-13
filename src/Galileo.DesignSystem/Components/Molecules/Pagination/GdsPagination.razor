@@ -1,0 +1,116 @@
+@namespace Galileo.DesignSystem.Molecules
+
+@if (TotalPages > 1)
+{
+    <nav class="gds-pagination" aria-label="@AriaLabel" @attributes="AdditionalAttributes">
+        <ol class="gds-pagination__list">
+            <li class="gds-pagination__item">
+                @if (HasPrevious)
+                {
+                    <a class="gds-pagination__link gds-pagination__link--direction"
+                       href="@PageHref(DisplayPage - 1)"
+                       aria-label="Vorige pagina">
+                        <GdsIcon Name="chevron-left" />
+                        <span>Vorige</span>
+                    </a>
+                }
+                else
+                {
+                    <span class="gds-pagination__link gds-pagination__link--direction gds-pagination__link--disabled"
+                          aria-disabled="true"
+                          aria-label="Vorige pagina">
+                        <GdsIcon Name="chevron-left" />
+                        <span>Vorige</span>
+                    </span>
+                }
+            </li>
+
+            @foreach (var page in PageItems)
+            {
+                <li class="gds-pagination__item">
+                    @if (page is null)
+                    {
+                        <span class="gds-pagination__ellipsis" aria-hidden="true">&hellip;</span>
+                    }
+                    else
+                    {
+                        var pageNumber = page.Value;
+
+                        <a class="@(pageNumber == DisplayPage ? "gds-pagination__link gds-pagination__link--current" : "gds-pagination__link")"
+                           href="@PageHref(pageNumber)"
+                           aria-label="Pagina @pageNumber"
+                           aria-current="@(pageNumber == DisplayPage ? "page" : null)">
+                            @pageNumber
+                        </a>
+                    }
+                </li>
+            }
+
+            <li class="gds-pagination__item">
+                @if (HasNext)
+                {
+                    <a class="gds-pagination__link gds-pagination__link--direction"
+                       href="@PageHref(DisplayPage + 1)"
+                       aria-label="Volgende pagina">
+                        <span>Volgende</span>
+                        <GdsIcon Name="chevron-right" />
+                    </a>
+                }
+                else
+                {
+                    <span class="gds-pagination__link gds-pagination__link--direction gds-pagination__link--disabled"
+                          aria-disabled="true"
+                          aria-label="Volgende pagina">
+                        <span>Volgende</span>
+                        <GdsIcon Name="chevron-right" />
+                    </span>
+                }
+            </li>
+        </ol>
+    </nav>
+}
+
+@code {
+    [Parameter] public int CurrentPage { get; set; } = 1;
+
+    [Parameter] public int TotalPages { get; set; }
+
+    [Parameter, EditorRequired] public Func<int, string> PageUrl { get; set; } = null!;
+
+    [Parameter] public string AriaLabel { get; set; } = "Paginering";
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private int DisplayPage => TotalPages > 0 ? Math.Clamp(CurrentPage, 1, TotalPages) : 1;
+
+    private bool HasPrevious => DisplayPage > 1;
+
+    private bool HasNext => DisplayPage < TotalPages;
+
+    private string PageHref(int page) => PageUrl(page);
+
+    private IReadOnlyList<int?> PageItems
+    {
+        get
+        {
+            if (TotalPages <= 7)
+                return Enumerable.Range(1, Math.Max(TotalPages, 0)).Cast<int?>().ToArray();
+
+            var pages = new List<int?> { 1 };
+            var start = Math.Max(2, DisplayPage - 1);
+            var end = Math.Min(TotalPages - 1, DisplayPage + 1);
+
+            if (start > 2)
+                pages.Add(null);
+
+            for (var page = start; page <= end; page++)
+                pages.Add(page);
+
+            if (end < TotalPages - 1)
+                pages.Add(null);
+
+            pages.Add(TotalPages);
+            return pages;
+        }
+    }
+}

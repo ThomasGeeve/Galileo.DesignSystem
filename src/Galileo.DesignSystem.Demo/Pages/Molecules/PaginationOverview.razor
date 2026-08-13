@@ -1,0 +1,86 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+@using Galileo.DesignSystem.Demo.Models
+
+<Showcase Title="Pagination" Description="Statische paginering met gewone links, een actieve pagina en vorige/volgende navigatie. De server bepaalt de data; GdsPagination rendert alleen de links." Source="@Source">
+    <GdsPagination CurrentPage="3"
+                   TotalPages="12"
+                   PageUrl="@GetPageUrl" />
+</Showcase>
+
+<Showcase Id="pagination-practice" Title="Pagination in de praktijk" Description="@PracticalDescription" Source="@PracticalSource">
+    <GdsTable Caption="@TableCaption">
+        <thead>
+            <tr>
+                <th scope="col">Naam</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr data-gds-table-row-link>
+                    <th scope="row">
+                        <a href="@($"/Users/Details/{user.Id}")">@user.Name</a>
+                    </th>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                </tr>
+            }
+        </tbody>
+    </GdsTable>
+
+    <div class="demo-row">
+        <GdsPagination CurrentPage="@Model.CurrentPage"
+                       TotalPages="@Model.TotalPages"
+                       PageUrl="@GetPracticalPageUrl" />
+    </div>
+</Showcase>
+
+@code {
+    [Parameter, EditorRequired] public MoleculesPageModel Model { get; set; } = null!;
+
+    private string PracticalDescription => $"Bij {Model.TotalItems} records en {Model.PageSize} records per pagina toont de tabel alleen de records van de huidige pagina. Gebruik de links om opnieuw een server request te doen.";
+
+    private string TableCaption => $"Gebruikers, pagina {Model.CurrentPage} van {Model.TotalPages}";
+
+    private static string GetPageUrl(int page) => $"/Home/Molecules?page={page}";
+
+    private static string GetPracticalPageUrl(int page) => $"/Home/Molecules?page={page}#pagination-practice";
+
+    private const string Source = """
+        <GdsPagination CurrentPage="3"
+                       TotalPages="12"
+                       PageUrl="@GetPageUrl" />
+        """;
+
+    private const string PracticalSource = """
+        // Controller: 40 records, 5 records per pagina.
+        var page = Request.Query["page"].FirstOrDefault() is string value &&
+                   int.TryParse(value, out var requestedPage)
+            ? requestedPage
+            : 1;
+
+        var totalItems = db.Users.Count();
+        var totalPages = (int)Math.Ceiling(totalItems / 5.0);
+
+        var users = db.Users
+            .OrderBy(user => user.Id)
+            .Skip((page - 1) * 5)
+            .Take(5)
+            .ToList();
+
+        <GdsTable Caption="Gebruikers">
+            ... de 5 records van de huidige pagina ...
+        </GdsTable>
+
+        <GdsPagination CurrentPage="@page"
+                       TotalPages="@totalPages"
+                       PageUrl="@GetPracticalPageUrl" />
+
+        @code {
+            private static string GetPracticalPageUrl(int page) =>
+                $"/Home/Molecules?page={page}#pagination-practice";
+        }
+        """;
+}

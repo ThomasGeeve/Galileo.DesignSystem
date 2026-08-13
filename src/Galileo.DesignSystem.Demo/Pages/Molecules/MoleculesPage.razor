@@ -1,4 +1,5 @@
 @namespace Galileo.DesignSystem.Demo.Pages.Molecules
+@using Galileo.DesignSystem.Demo.Models
 
 <DemoShell>
     <GdsText Type="@TextType.Display">Molecules</GdsText>
@@ -6,5 +7,10 @@
 
     <FormFieldOverview />
     <TableOverview />
+    <PaginationOverview Model="@Model" />
     <NavItemOverview />
 </DemoShell>
+
+@code {
+    [Parameter] public MoleculesPageModel Model { get; set; } = null!;
+}

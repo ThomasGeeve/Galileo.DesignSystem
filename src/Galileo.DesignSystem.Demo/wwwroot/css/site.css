@@ -33,6 +33,7 @@ body {
 .showcase {
   padding: var(--gds-space-6);
   margin-bottom: var(--gds-space-6);
+  scroll-margin-top: 5rem;
   background-color: var(--gds-color-surface);
   border: 1px solid var(--gds-color-border);
   border-radius: var(--gds-radius-lg);

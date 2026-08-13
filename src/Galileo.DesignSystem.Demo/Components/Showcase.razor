@@ -1,6 +1,6 @@
 @namespace Galileo.DesignSystem.Demo.Components
 
-<section class="showcase">
+<section id="@Id" class="showcase">
     <h2 class="showcase__title">@Title</h2>
 
     @if (!string.IsNullOrWhiteSpace(Description))
@@ -22,6 +22,7 @@
 </section>
 
 @code {
+    [Parameter] public string? Id { get; set; }
     [Parameter] public string Title { get; set; } = string.Empty;
     [Parameter] public string? Description { get; set; }
     [Parameter] public string? Source { get; set; }
