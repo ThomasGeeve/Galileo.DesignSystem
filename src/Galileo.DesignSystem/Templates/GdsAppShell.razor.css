@@ -14,5 +14,7 @@
 .gds-app-shell__content {
   flex: 1;
   min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
   padding: var(--gds-space-8);
 }

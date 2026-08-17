@@ -12,10 +12,6 @@ body {
   background-color: var(--gds-color-surface-hover);
 }
 
-.gds-app-shell__content {
-  padding: var(--gds-space-8);
-}
-
 .demo-intro {
   max-width: 52rem;
   margin-top: var(--gds-space-8);
@@ -28,30 +24,6 @@ body {
   align-items: center;
   gap: var(--gds-space-3);
   margin-top: var(--gds-space-4);
-}
-
-.showcase {
-  padding: var(--gds-space-6);
-  margin-bottom: var(--gds-space-6);
-  scroll-margin-top: 5rem;
-  background-color: var(--gds-color-surface);
-  border: 1px solid var(--gds-color-border);
-  border-radius: var(--gds-radius-lg);
-  box-shadow: var(--gds-shadow-sm);
-}
-
-.showcase__title {
-  margin: 0 0 var(--gds-space-2);
-  font-size: var(--gds-font-size-title);
-}
-
-.showcase__description {
-  margin: 0 0 var(--gds-space-4);
-  color: var(--gds-color-text-muted);
-}
-
-.showcase__demo {
-  display: block;
 }
 
 .demo-icon-grid {
@@ -88,27 +60,21 @@ body {
   max-width: 16rem;
 }
 
+.demo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--gds-space-4);
+  max-width: 52rem;
+}
+
+.demo-card-meta {
+  margin: var(--gds-space-1) 0 0;
+  color: var(--gds-color-text-muted);
+  font-size: var(--gds-font-size-sm);
+}
+
 .demo-organism-preview {
   overflow: hidden;
   border: 1px solid var(--gds-color-border);
   border-radius: var(--gds-radius-md);
-}
-
-.showcase__source {
-  margin-top: var(--gds-space-4);
-}
-
-.showcase__source summary {
-  cursor: pointer;
-  font-weight: var(--gds-font-weight-medium);
-  color: var(--gds-color-primary);
-}
-
-.showcase__source pre {
-  margin: var(--gds-space-2) 0 0;
-  padding: var(--gds-space-4);
-  overflow-x: auto;
-  background-color: var(--gds-color-surface-hover);
-  border-radius: var(--gds-radius-md);
-  font-size: var(--gds-font-size-sm);
 }

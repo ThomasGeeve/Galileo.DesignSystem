@@ -1,0 +1,36 @@
+.showcase {
+  margin-bottom: var(--gds-space-6);
+  scroll-margin-top: 5rem;
+}
+
+.showcase__heading {
+  display: grid;
+  gap: var(--gds-space-2);
+}
+
+.showcase__heading ::deep .showcase__description {
+  color: var(--gds-color-text-muted);
+}
+
+.showcase__demo {
+  display: block;
+}
+
+.showcase__source {
+  width: 100%;
+}
+
+.showcase__source summary {
+  cursor: pointer;
+  color: var(--gds-color-primary);
+  font-weight: var(--gds-font-weight-medium);
+}
+
+.showcase__source pre {
+  margin: var(--gds-space-2) 0 0;
+  padding: var(--gds-space-4);
+  overflow-x: auto;
+  background-color: var(--gds-color-surface-hover);
+  border-radius: var(--gds-radius-md);
+  font-size: var(--gds-font-size-sm);
+}

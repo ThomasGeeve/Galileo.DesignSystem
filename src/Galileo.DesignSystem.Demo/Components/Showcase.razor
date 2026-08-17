@@ -1,24 +1,25 @@
 @namespace Galileo.DesignSystem.Demo.Components
 
 <section id="@Id" class="showcase">
-    <h2 class="showcase__title">@Title</h2>
+    <GdsCard FooterContent="@SourceContent">
+        <HeaderContent>
+            <div class="showcase__heading">
+                <GdsText Type="@TextType.Headline">@Title</GdsText>
 
-    @if (!string.IsNullOrWhiteSpace(Description))
-    {
-        <p class="showcase__description">@Description</p>
-    }
+                @if (!string.IsNullOrWhiteSpace(Description))
+                {
+                    <GdsText Type="@TextType.Body" ClassName="showcase__description">@Description</GdsText>
+                }
+            </div>
+        </HeaderContent>
 
-    <div class="showcase__demo">
-        @ChildContent
-    </div>
+        <ChildContent>
+            <div class="showcase__demo">
+                @ChildContent
+            </div>
+        </ChildContent>
 
-    @if (!string.IsNullOrWhiteSpace(Source))
-    {
-        <details class="showcase__source">
-            <summary>Voorbeeldcode</summary>
-            <pre><code>@Source</code></pre>
-        </details>
-    }
+    </GdsCard>
 </section>
 
 @code {
@@ -27,4 +28,11 @@
     [Parameter] public string? Description { get; set; }
     [Parameter] public string? Source { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private RenderFragment? SourceContent => string.IsNullOrWhiteSpace(Source)
+        ? null
+        : @<details class="showcase__source">
+            <summary>Voorbeeldcode</summary>
+            <pre><code>@Source</code></pre>
+        </details>;
 }

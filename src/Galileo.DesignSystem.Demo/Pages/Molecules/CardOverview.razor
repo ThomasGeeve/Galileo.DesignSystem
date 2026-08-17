@@ -1,0 +1,71 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+
+<Showcase Title="Card" Description="Een neutrale container voor gegroepeerde content met optionele header-, body- en footer-slots." Source="@Source">
+    <GdsCard>
+        <GdsText Type="@TextType.Title">Project Galileo</GdsText>
+        <p>Een card kan eenvoudige content bevatten zonder vaste titel- of actie-API.</p>
+    </GdsCard>
+</Showcase>
+
+<Showcase Id="card-slots" Title="Card met slots" Description="Gebruik HeaderContent en FooterContent wanneer de card een eigen kop of acties nodig heeft." Source="@SlotsSource">
+    <div class="demo-card-grid">
+        <GdsCard>
+            <HeaderContent>
+                <div>
+                    <GdsText Type="@TextType.Title">Teamleden</GdsText>
+                    <p class="demo-card-meta">Laatst bijgewerkt vandaag</p>
+                </div>
+            </HeaderContent>
+
+            <ChildContent>
+                <p>Bekijk de leden van je team en beheer hun toegangsrechten.</p>
+            </ChildContent>
+
+            <FooterContent>
+                <GdsButton Href="/Home/Molecules">Team bekijken</GdsButton>
+            </FooterContent>
+        </GdsCard>
+
+        <GdsCard>
+            <HeaderContent>
+                <div>
+                    <GdsText Type="@TextType.Title">Openstaande taken</GdsText>
+                    <p class="demo-card-meta">Deze week</p>
+                </div>
+            </HeaderContent>
+
+            <ChildContent>
+                <p>Er staan nog drie taken klaar om opgepakt te worden.</p>
+            </ChildContent>
+
+            <FooterContent>
+                <GdsButton Href="/Home/Molecules" Variant="@ButtonVariant.Tertiary">Taken bekijken</GdsButton>
+            </FooterContent>
+        </GdsCard>
+    </div>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <GdsCard>
+            <GdsText Type="@TextType.Title">Project Galileo</GdsText>
+            <p>Content van de card.</p>
+        </GdsCard>
+        """;
+
+    private const string SlotsSource = """
+        <GdsCard>
+            <HeaderContent>
+                <GdsText Type="@TextType.Title">Teamleden</GdsText>
+            </HeaderContent>
+
+            <ChildContent>
+                <p>Bekijk de leden van je team.</p>
+            </ChildContent>
+
+            <FooterContent>
+                <GdsButton Href="/Team">Team bekijken</GdsButton>
+            </FooterContent>
+        </GdsCard>
+        """;
+}

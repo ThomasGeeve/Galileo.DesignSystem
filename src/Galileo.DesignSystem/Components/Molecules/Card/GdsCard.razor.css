@@ -1,0 +1,57 @@
+.gds-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--gds-color-surface);
+  border: 1px solid var(--gds-color-border);
+  border-radius: var(--gds-radius-lg);
+  box-shadow: var(--gds-shadow-sm);
+}
+
+.gds-card__header,
+.gds-card__body,
+.gds-card__footer {
+  padding: var(--gds-space-6);
+}
+
+.gds-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gds-space-4);
+  border-bottom: 1px solid var(--gds-color-border);
+}
+
+.gds-card__body {
+  flex: 1;
+}
+
+.gds-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gds-space-3);
+  border-top: 1px solid var(--gds-color-border);
+}
+
+.gds-card__header ::deep > :first-child,
+.gds-card__body ::deep > :first-child,
+.gds-card__footer ::deep > :first-child {
+  margin-top: 0;
+}
+
+.gds-card__header ::deep > :last-child,
+.gds-card__body ::deep > :last-child,
+.gds-card__footer ::deep > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 40rem) {
+  .gds-card__header,
+  .gds-card__body,
+  .gds-card__footer {
+    padding: var(--gds-space-4);
+  }
+}
