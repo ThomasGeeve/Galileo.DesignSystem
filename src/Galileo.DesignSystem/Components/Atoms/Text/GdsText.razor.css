@@ -27,13 +27,6 @@
   --gds-text-size: var(--gds-font-size-md);
 }
 
-.gds-text--label {
-  --gds-text-size: var(--gds-font-size-sm);
-  font-weight: var(--gds-font-weight-medium);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 .gds-text--sm {
   --gds-text-size: var(--gds-font-size-sm);
 }

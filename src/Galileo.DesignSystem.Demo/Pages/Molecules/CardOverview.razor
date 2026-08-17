@@ -3,7 +3,7 @@
 <Showcase Title="Card" Description="Een neutrale container voor gegroepeerde content met optionele header-, body- en footer-slots." Source="@Source">
     <GdsCard>
         <GdsText Type="@TextType.Title">Project Galileo</GdsText>
-        <p>Een card kan eenvoudige content bevatten zonder vaste titel- of actie-API.</p>
+        <GdsText Type="@TextType.Body">Een card kan eenvoudige content bevatten zonder vaste titel- of actie-API.</GdsText>
     </GdsCard>
 </Showcase>
 
@@ -13,12 +13,12 @@
             <HeaderContent>
                 <div>
                     <GdsText Type="@TextType.Title">Teamleden</GdsText>
-                    <p class="demo-card-meta">Laatst bijgewerkt vandaag</p>
+                    <GdsText Type="@TextType.Body">5 leden</GdsText>
                 </div>
             </HeaderContent>
 
             <ChildContent>
-                <p>Bekijk de leden van je team en beheer hun toegangsrechten.</p>
+                <GdsText Type="@TextType.Body">Bekijk de leden van je team en beheer hun toegangsrechten.</GdsText>
             </ChildContent>
 
             <FooterContent>
@@ -28,14 +28,12 @@
 
         <GdsCard>
             <HeaderContent>
-                <div>
-                    <GdsText Type="@TextType.Title">Openstaande taken</GdsText>
-                    <p class="demo-card-meta">Deze week</p>
-                </div>
+                <GdsText Type="@TextType.Title">Openstaande taken</GdsText>
+                <GdsText Type="@TextType.Body">Deze week</GdsText>
             </HeaderContent>
 
             <ChildContent>
-                <p>Er staan nog drie taken klaar om opgepakt te worden.</p>
+                <GdsText Type="@TextType.Body">Er staan nog drie taken klaar om opgepakt te worden.</GdsText>
             </ChildContent>
 
             <FooterContent>

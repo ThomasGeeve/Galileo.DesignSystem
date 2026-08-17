@@ -5,6 +5,5 @@ public enum TextType
     Display,
     Headline,
     Title,
-    Label,
     Body
 }
