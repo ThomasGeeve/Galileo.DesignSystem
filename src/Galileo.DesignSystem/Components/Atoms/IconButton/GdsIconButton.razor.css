@@ -96,6 +96,32 @@
   --gds-icon-btn-accent-active: var(--gds-color-danger-active);
 }
 
+.gds-icon-btn--ghost {
+  color: var(--gds-icon-btn-accent);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.gds-icon-btn--ghost:hover {
+  background-color: color-mix(in srgb, var(--gds-icon-btn-accent) 10%, transparent);
+}
+
+.gds-icon-btn--ghost:active {
+  background-color: color-mix(in srgb, var(--gds-icon-btn-accent) 20%, transparent);
+}
+
+.gds-icon-btn--ghost.gds-icon-btn--tertiary {
+  color: var(--gds-icon-btn-accent-text);
+}
+
+.gds-icon-btn--ghost.gds-icon-btn--tertiary:hover {
+  background-color: var(--gds-color-surface-hover);
+}
+
+.gds-icon-btn--ghost.gds-icon-btn--tertiary:active {
+  background-color: var(--gds-color-surface-active);
+}
+
 .gds-icon-btn--outline.gds-icon-btn--secondary,
 .gds-icon-btn--outline.gds-icon-btn--tertiary {
   color: var(--gds-icon-btn-accent-text);

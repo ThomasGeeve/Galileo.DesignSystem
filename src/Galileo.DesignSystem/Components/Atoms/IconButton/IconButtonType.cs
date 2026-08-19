@@ -4,5 +4,6 @@ public enum IconButtonType
 {
     Filled,
     Outline,
+    Ghost,
     Elevated
 }

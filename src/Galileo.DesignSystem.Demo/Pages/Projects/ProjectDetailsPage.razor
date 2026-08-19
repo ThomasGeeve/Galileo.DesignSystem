@@ -18,8 +18,19 @@
 
         <dl class="project-details__fields">
             <div class="project-details__field">
-                <dt>Naam</dt>
-                <dd>@Model.Project.Name</dd>
+                <dt>
+                    Naam
+                    <GdsIconButton Icon="edit"
+                                   Type="@IconButtonType.Ghost"
+                                   Variant="@IconButtonVariant.Tertiary"
+                                   Size="@IconButtonSize.Sm"
+                                   AriaLabel="Naam wijzigen"
+                                   data-gds-dialog-open="edit-project-name-dialog" />
+                </dt>
+                <dd class="project-details__editable-value">
+                    <span id="project-name-value">@Model.Project.Name</span>
+
+                </dd>
             </div>
             <div class="project-details__field">
                 <dt>Adres</dt>
@@ -131,8 +142,48 @@
                 <GdsText Type="@TextType.Body">Wil je dit project archiveren?</GdsText>
             </ChildContent>
             <Footer>
-                <GdsButton Type="@ButtonType.Outline" data-gds-dialog-close="">Annuleren</GdsButton>
-                <GdsButton data-gds-dialog-close="">Bevestigen</GdsButton>
+                <GdsButton Type="@ButtonType.Outline" data-gds-dialog-close>Annuleren</GdsButton>
+                <GdsButton data-gds-dialog-close>Bevestigen</GdsButton>
+            </Footer>
+        </GdsDialog>
+
+        <GdsDialog Id="edit-project-name-dialog" Title="Projectnaam wijzigen">
+            <ChildContent>
+                <form id="edit-project-name-form"
+                      method="post"
+                      action="@GetProjectNameUpdateUrl()"
+                      data-gds-dialog-form
+                      data-gds-dialog-update-target="project-name-value"
+                      data-gds-dialog-update-field="Name"
+                      data-gds-dialog-error-message="De projectnaam kon niet worden opgeslagen.">
+                    <p class="project-details__dialog-error"
+                       data-gds-form-error-summary
+                       role="alert"
+                       hidden></p>
+
+                    <GdsFormField FieldId="project-name"
+                                  Description="Kies een duidelijke naam van maximaal 120 tekens.">
+                        <GdsLabel For="project-name-input" Text="Projectnaam" />
+                        <GdsInput Id="project-name-input"
+                                  Name="Name"
+                                  Value="@Model.Project.Name"
+                                  Required="true"
+                                  aria-describedby="project-name-description project-name-error"
+                                  maxlength="120" />
+                    </GdsFormField>
+                </form>
+            </ChildContent>
+
+            <Footer>
+                <GdsButton Type="@ButtonType.Outline"
+                           Variant="@ButtonVariant.Tertiary"
+                           data-gds-dialog-close>
+                    Annuleren
+                </GdsButton>
+                <GdsButton HtmlType="submit"
+                           Form="edit-project-name-form">
+                    Opslaan
+                </GdsButton>
             </Footer>
         </GdsDialog>
     </div>
@@ -142,6 +193,8 @@
     [Parameter, EditorRequired] public ProjectDetailsPageModel Model { get; set; } = null!;
 
     private string ProjectUrl => $"/Home/Projects/{Model.Project.ProjectId}";
+
+    private string GetProjectNameUpdateUrl() => $"/Home/Projects/{Model.Project.ProjectId}/name";
 
     private static string FormatDate(DateTime? date) => date?.ToString("dd-MM-yyyy") ?? "-";
 

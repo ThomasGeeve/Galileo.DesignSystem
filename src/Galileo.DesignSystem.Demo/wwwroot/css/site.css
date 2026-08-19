@@ -201,6 +201,19 @@ body {
   font-size: var(--gds-font-size-md);
 }
 
+.project-details__editable-value {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gds-space-3);
+}
+
+.project-details__dialog-error {
+  margin: 0;
+  color: var(--gds-color-danger);
+  font-size: var(--gds-font-size-sm);
+}
+
 .project-details__contact {
   display: grid;
   gap: var(--gds-space-1);

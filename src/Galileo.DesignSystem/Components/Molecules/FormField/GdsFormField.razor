@@ -8,9 +8,13 @@
         <p id="@DescriptionId" class="gds-form-field__description">@Description</p>
     }
 
-    @if (!string.IsNullOrWhiteSpace(Error))
+    @if (!string.IsNullOrWhiteSpace(FieldId) || !string.IsNullOrWhiteSpace(Error))
     {
-        <p id="@ErrorId" class="gds-form-field__error" role="alert">@Error</p>
+        <p id="@ErrorId"
+           class="gds-form-field__error"
+           role="alert"
+           data-gds-form-error
+           hidden="@(string.IsNullOrWhiteSpace(Error) ? "hidden" : null)">@Error</p>
     }
 </div>
 
