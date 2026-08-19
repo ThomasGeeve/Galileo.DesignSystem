@@ -1,0 +1,118 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Projects
+@using Galileo.DesignSystem.Demo.Models
+
+<DemoShell>
+    <div class="projects-page">
+        <GdsText Type="@TextType.Display">Projecten</GdsText>
+
+        <form class="projects-page__filters" method="get" action="/Home/Projects">
+            <div class="projects-page__field">
+                <GdsFormField FieldId="project-search">
+                    <GdsLabel For="project-search" Text="Zoeken" />
+                    <GdsSearchField Id="project-search"
+                                    Name="search"
+                                    Value="@Model.Search"
+                                    Placeholder="Projectnummer of projectnaam" />
+                </GdsFormField>
+            </div>
+
+            <div class="projects-page__field">
+                <GdsFormField FieldId="project-client">
+                    <GdsLabel For="project-client" Text="Opdrachtgever" />
+                    <GdsSelect Id="project-client" Name="client" data-gds-submit-on-change="">
+                        <option value="">Alle opdrachtgevers</option>
+                        @foreach (var client in Model.Clients)
+                        {
+                            if (string.Equals(client, Model.SelectedClient, StringComparison.OrdinalIgnoreCase))
+                            {
+                                <option value="@client" selected>@client</option>
+                            }
+                            else
+                            {
+                                <option value="@client">@client</option>
+                            }
+                        }
+                    </GdsSelect>
+                </GdsFormField>
+            </div>
+
+        </form>
+
+        <div class="projects-page__summary">
+            <GdsText Type="@TextType.Body">@ResultSummary</GdsText>
+        </div>
+
+        <div class="projects-page__table">
+            <GdsTable Id="projects-table" Caption="Projecten">
+                <thead>
+                    <tr>
+                        <th scope="col">Projectnummer</th>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Opdrachtgever</th>
+                        <th scope="col">Locatie</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Projecttype</th>
+                        <th scope="col">Startdatum</th>
+                        <th scope="col">Einddatum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Projects.Count > 0)
+                    {
+                        foreach (var project in Model.Projects)
+                        {
+                            <tr data-gds-table-row-link>
+                                <th scope="row">
+                                    <a href="@($"/Home/Projects/{project.ProjectId}")">@project.ProjectNumber</a>
+                                </th>
+                                <td>@project.Name</td>
+                                <td>@project.Client</td>
+                                <td>@project.Location</td>
+                                <td>@project.Status</td>
+                                <td>@project.Type</td>
+                                <td>@FormatDate(project.StartDate)</td>
+                                <td>@FormatDate(project.EndDate)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="8" class="projects-page__empty">Geen projecten gevonden.</td>
+                        </tr>
+                    }
+                </tbody>
+            </GdsTable>
+        </div>
+
+        <div class="projects-page__pagination">
+            <GdsPagination CurrentPage="@Model.CurrentPage"
+                           TotalPages="@Model.TotalPages"
+                           PageUrl="@GetPageUrl" />
+        </div>
+    </div>
+</DemoShell>
+
+@code {
+    [Parameter, EditorRequired] public ProjectsPageModel Model { get; set; } = null!;
+
+    private string ResultSummary => Model.TotalItems == 1
+        ? "1 project gevonden."
+        : $"{Model.TotalItems} projecten gevonden.";
+
+    private static string FormatDate(DateTime? date) => date?.ToString("dd-MM-yyyy") ?? "-";
+
+    private string GetPageUrl(int page)
+    {
+        var queryParameters = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(Model.Search))
+            queryParameters.Add($"search={Uri.EscapeDataString(Model.Search)}");
+
+        if (!string.IsNullOrWhiteSpace(Model.SelectedClient))
+            queryParameters.Add($"client={Uri.EscapeDataString(Model.SelectedClient)}");
+
+        queryParameters.Add($"page={page}");
+        return $"/Home/Projects?{string.Join("&", queryParameters)}#projects-table";
+    }
+}

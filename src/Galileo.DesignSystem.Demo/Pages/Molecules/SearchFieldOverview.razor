@@ -1,0 +1,25 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Molecules
+
+<Showcase Title="Search field" Description="Een zoekveld met een submit-iconbutton. Enter en de iconbutton submitten het omringende native formulier." Source="@Source">
+    <form class="demo-form-stack" method="get" action="/Home/Projects">
+        <GdsFormField FieldId="search-field-overview">
+            <GdsLabel For="search-field-overview" Text="Zoeken" />
+            <GdsSearchField Id="search-field-overview"
+                            Name="search"
+                            Placeholder="Projectnummer of projectnaam" />
+        </GdsFormField>
+    </form>
+</Showcase>
+
+@code {
+    private const string Source = """
+        <form method="get" action="/Home/Projects">
+            <GdsFormField FieldId="project-search">
+                <GdsLabel For="project-search" Text="Zoeken" />
+                <GdsSearchField Id="project-search"
+                                Name="search"
+                                Placeholder="Projectnummer of projectnaam" />
+            </GdsFormField>
+        </form>
+        """;
+}

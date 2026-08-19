@@ -1,0 +1,158 @@
+@namespace Galileo.DesignSystem.Demo.Pages.Projects
+@using Galileo.DesignSystem.Demo.Models
+
+<DemoShell>
+    <div class="project-details-page">
+        <header class="project-details__header">
+            <GdsText Type="@TextType.Display">Project Informatie</GdsText>
+
+            <div class="project-details__archive-action">
+                <GdsIconButton Icon="archive"
+                               Type="@IconButtonType.Outline"
+                               Variant="@IconButtonVariant.Secondary"
+                               AriaLabel="Project archiveren"
+                               data-gds-dialog-open="archive-project-dialog" />
+                <span>Project Archiveren</span>
+            </div>
+        </header>
+
+        <dl class="project-details__fields">
+            <div class="project-details__field">
+                <dt>Naam</dt>
+                <dd>@Model.Project.Name</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Adres</dt>
+                <dd>@Model.Project.Address</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Opdrachtgever</dt>
+                <dd>@Model.Project.Client</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Contactpersoon</dt>
+                <dd class="project-details__contact">
+                    <span>@Model.Project.ContactPerson</span>
+                    <span>@Model.Project.ContactEmail</span>
+                    <span>@Model.Project.ContactPhoneNumber</span>
+                </dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Projectnummer</dt>
+                <dd>@Model.Project.ProjectNumber</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Gemaalnaam</dt>
+                <dd>@Model.Project.GemaalName</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Gemaalnummer</dt>
+                <dd>@Model.Project.GemaalNumber</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Startdatum</dt>
+                <dd>@FormatDate(Model.Project.StartDate)</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Einddatum</dt>
+                <dd>@FormatDate(Model.Project.EndDate)</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Status</dt>
+                <dd>@Model.Project.Status</dd>
+            </div>
+            <div class="project-details__field">
+                <dt>Projecttype</dt>
+                <dd>@Model.Project.Type</dd>
+            </div>
+        </dl>
+
+        <section class="project-details__worklogs" aria-labelledby="worklogs-title">
+            <GdsText Type="@TextType.Headline" id="worklogs-title">
+                Werkregistratie
+            </GdsText>
+
+            <form class="project-details__worklog-filters" method="get" action="@ProjectUrl">
+                <div class="project-details__worklog-field">
+                    <GdsFormField FieldId="worklog-search">
+                        <GdsLabel For="worklog-search" Text="Zoeken" />
+                        <GdsSearchField Id="worklog-search"
+                                        Name="search"
+                                        Value="@Model.WorkLogSearch"
+                                        Placeholder="Uitgevoerd door" />
+                    </GdsFormField>
+                </div>
+            </form>
+
+            <div class="project-details__worklog-table">
+                <GdsTable Id="worklogs-table" Caption="Werkregistratie">
+                    <thead>
+                        <tr>
+                            <th scope="col">Uitgevoerd door</th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Heenreistijd</th>
+                            <th scope="col">Werkduur</th>
+                            <th scope="col">Terugreistijd</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.WorkLogs.Count > 0)
+                        {
+                            foreach (var workLog in Model.WorkLogs)
+                            {
+                                <tr>
+                                    <th scope="row">@workLog.PerformedBy</th>
+                                    <td>@workLog.Date.ToString("dd-MM-yyyy")</td>
+                                    <td>@workLog.TravelTimeTo</td>
+                                    <td>@workLog.WorkDuration</td>
+                                    <td>@workLog.TravelTimeFrom</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="project-details__empty">Geen werkregistraties gevonden.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </GdsTable>
+            </div>
+
+            <div class="project-details__pagination">
+                <GdsPagination CurrentPage="@Model.CurrentPage"
+                               TotalPages="@Model.TotalPages"
+                               PageUrl="@GetWorkLogPageUrl" />
+            </div>
+        </section>
+
+        <GdsDialog Id="archive-project-dialog" Title="Project Archiveren">
+            <ChildContent>
+                <GdsText Type="@TextType.Body">Wil je dit project archiveren?</GdsText>
+            </ChildContent>
+            <Footer>
+                <GdsButton Type="@ButtonType.Outline" data-gds-dialog-close="">Annuleren</GdsButton>
+                <GdsButton data-gds-dialog-close="">Bevestigen</GdsButton>
+            </Footer>
+        </GdsDialog>
+    </div>
+</DemoShell>
+
+@code {
+    [Parameter, EditorRequired] public ProjectDetailsPageModel Model { get; set; } = null!;
+
+    private string ProjectUrl => $"/Home/Projects/{Model.Project.ProjectId}";
+
+    private static string FormatDate(DateTime? date) => date?.ToString("dd-MM-yyyy") ?? "-";
+
+    private string GetWorkLogPageUrl(int page)
+    {
+        var queryParameters = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(Model.WorkLogSearch))
+            queryParameters.Add($"search={Uri.EscapeDataString(Model.WorkLogSearch)}");
+
+        queryParameters.Add($"page={page}");
+        return $"{ProjectUrl}?{string.Join("&", queryParameters)}#worklogs-table";
+    }
+}

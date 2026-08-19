@@ -90,6 +90,18 @@
     }
   });
 
+  document.addEventListener('change', function (event) {
+    if (!(event.target instanceof HTMLSelectElement) ||
+        !event.target.hasAttribute('data-gds-submit-on-change')) {
+      return;
+    }
+
+    const form = event.target.form;
+    if (form) {
+      form.requestSubmit();
+    }
+  });
+
   document.addEventListener('cancel', function (event) {
     const dialog = event.target;
 

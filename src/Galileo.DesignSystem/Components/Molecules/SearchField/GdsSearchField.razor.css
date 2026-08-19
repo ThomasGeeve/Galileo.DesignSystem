@@ -1,0 +1,29 @@
+.gds-search-field {
+  position: relative;
+  width: 100%;
+}
+
+.gds-search-field ::deep .gds-input {
+  padding-right: var(--gds-space-10);
+}
+
+.gds-search-field ::deep .gds-icon-btn.gds-icon-btn--outline.gds-icon-btn--tertiary {
+  position: absolute;
+  top: 50%;
+  right: var(--gds-space-1);
+  color: var(--gds-color-primary);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.gds-search-field ::deep .gds-icon-btn.gds-icon-btn--outline.gds-icon-btn--tertiary:hover,
+.gds-search-field ::deep .gds-icon-btn.gds-icon-btn--outline.gds-icon-btn--tertiary:active {
+  background-color: transparent;
+}
+
+.gds-search-field ::deep .gds-icon-btn.gds-icon-btn--outline.gds-icon-btn--tertiary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--gds-color-focus);
+}

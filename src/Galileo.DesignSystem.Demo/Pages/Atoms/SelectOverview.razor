@@ -9,6 +9,25 @@
     </GdsSelect>
 </Showcase>
 
+<Showcase Id="select-submit-on-change"
+          Title="Select met automatisch submitten"
+          Description="Met data-gds-submit-on-change wordt het omringende native formulier direct verstuurd nadat een optie is gekozen."
+          Source="@SubmitOnChangeSource">
+    <form class="demo-form-stack" method="get" action="/Home/Projects">
+        <GdsFormField FieldId="select-submit-example">
+            <GdsLabel For="select-submit-example" Text="Opdrachtgever" />
+            <GdsSelect Id="select-submit-example"
+                        Name="client"
+                        data-gds-submit-on-change="">
+                <option value="">Alle opdrachtgevers</option>
+                <option value="Gemeente Rotterdam">Gemeente Rotterdam</option>
+                <option value="Provincie Zuid-Holland">Provincie Zuid-Holland</option>
+                <option value="Waterschap Rivierenland">Waterschap Rivierenland</option>
+            </GdsSelect>
+        </GdsFormField>
+    </form>
+</Showcase>
+
 @code {
     private const string Source = """
         <GdsSelect Name="role" Size="@SelectSize.Md">
@@ -17,5 +36,19 @@
             <option value="developer">Developer</option>
             <option value="product-owner">Product owner</option>
         </GdsSelect>
+        """;
+
+    private const string SubmitOnChangeSource = """
+        <form method="get" action="/Home/Projects">
+            <GdsFormField FieldId="client-filter">
+                <GdsLabel For="client-filter" Text="Opdrachtgever" />
+                <GdsSelect Id="client-filter"
+                            Name="client"
+                            data-gds-submit-on-change="">
+                    <option value="">Alle opdrachtgevers</option>
+                    <option value="Gemeente Rotterdam">Gemeente Rotterdam</option>
+                </GdsSelect>
+            </GdsFormField>
+        </form>
         """;
 }

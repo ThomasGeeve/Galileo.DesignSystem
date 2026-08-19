@@ -78,3 +78,213 @@ body {
   border: 1px solid var(--gds-color-border);
   border-radius: var(--gds-radius-md);
 }
+
+/* Showcase */
+.showcase {
+  margin-bottom: var(--gds-space-6);
+  scroll-margin-top: 5rem;
+}
+
+.showcase__heading {
+  display: grid;
+  gap: var(--gds-space-2);
+}
+
+.showcase__heading .showcase__description {
+  color: var(--gds-color-text-muted);
+}
+
+.showcase__source {
+  width: 100%;
+}
+
+.showcase__source summary {
+  cursor: pointer;
+  color: var(--gds-color-primary);
+  font-weight: var(--gds-font-weight-medium);
+}
+
+.showcase__source pre {
+  margin: var(--gds-space-2) 0 0;
+  padding: var(--gds-space-4);
+  overflow-x: auto;
+  background-color: var(--gds-color-surface-hover);
+  border-radius: var(--gds-radius-md);
+  font-size: var(--gds-font-size-sm);
+}
+
+/* Projects index */
+.projects-page {
+  display: grid;
+  gap: var(--gds-space-5);
+}
+
+.projects-page__filters {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1.2fr) minmax(16rem, 1fr);
+  align-items: end;
+  gap: var(--gds-space-4);
+  width: 100%;
+  max-width: 56rem;
+}
+
+.projects-page__field {
+  min-width: 0;
+}
+
+.projects-page__summary {
+  color: var(--gds-color-text-muted);
+}
+
+.projects-page__summary .gds-text {
+  color: inherit;
+}
+
+.projects-page__table {
+  min-width: 0;
+}
+
+.projects-page__table .gds-table {
+  min-width: 78rem;
+}
+
+.projects-page__table .projects-page__empty {
+  color: var(--gds-color-text-muted);
+  text-align: center;
+}
+
+/* Project details */
+.project-details-page {
+  display: grid;
+  gap: var(--gds-space-8);
+}
+
+.project-details__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gds-space-8);
+}
+
+.project-details__archive-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gds-space-2);
+  color: var(--gds-color-primary);
+  font-weight: var(--gds-font-weight-medium);
+}
+
+.project-details__fields {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--gds-space-6) var(--gds-space-8);
+  width: 100%;
+  max-width: 80rem;
+  margin: 0;
+}
+
+.project-details__field {
+  min-width: 0;
+}
+
+.project-details__field dt {
+  margin-bottom: var(--gds-space-2);
+  color: var(--gds-color-text-muted);
+  font-size: var(--gds-font-size-lg);
+  font-weight: var(--gds-font-weight-bold);
+}
+
+.project-details__field dd {
+  margin: 0;
+  color: var(--gds-color-text);
+  font-size: var(--gds-font-size-md);
+}
+
+.project-details__contact {
+  display: grid;
+  gap: var(--gds-space-1);
+}
+
+.project-details__worklogs {
+  display: grid;
+  gap: var(--gds-space-5);
+  padding-top: var(--gds-space-8);
+  border-top: 1px solid var(--gds-color-border);
+}
+
+.project-details__worklog-filters {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.project-details__worklog-field,
+.project-details__worklog-table {
+  min-width: 0;
+}
+
+.project-details__worklog-table .gds-table {
+  min-width: 52rem;
+}
+
+.project-details__empty {
+  color: var(--gds-color-text-muted);
+  text-align: center;
+}
+
+/* Shared project pagination */
+.projects-page__pagination,
+.project-details__pagination {
+  display: grid;
+  justify-items: center;
+}
+
+.projects-page__pagination {
+  margin-top: var(--gds-space-2);
+}
+
+.project-details__pagination {
+  margin-top: calc(var(--gds-space-2) * -1);
+}
+
+.projects-page__pagination .gds-pagination,
+.project-details__pagination .gds-pagination {
+  width: max-content;
+  max-width: 100%;
+}
+
+@media (max-width: 70rem) {
+  .project-details__fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 56rem) {
+  .projects-page__filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .project-details__fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .projects-page__filters {
+    grid-template-columns: 1fr;
+  }
+
+  .project-details__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 32rem) {
+  .project-details__fields {
+    grid-template-columns: 1fr;
+  }
+}

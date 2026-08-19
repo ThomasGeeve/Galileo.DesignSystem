@@ -1,0 +1,38 @@
+@namespace Galileo.DesignSystem.Molecules
+
+<div class="gds-search-field" @attributes="AdditionalAttributes">
+    <GdsInput Id="@Id"
+              Name="@Name"
+              Type="search"
+              Value="@Value"
+              Placeholder="@Placeholder"
+              Size="@Size"
+              autocomplete="@Autocomplete"
+              @attributes="InputAttributes" />
+    <GdsIconButton Icon="search"
+                   Type="@IconButtonType.Outline"
+                   Variant="@IconButtonVariant.Tertiary"
+                   Size="@IconButtonSize.Sm"
+                   AriaLabel="@ButtonAriaLabel"
+                   HtmlType="submit" />
+</div>
+
+@code {
+    [Parameter] public string? Id { get; set; }
+
+    [Parameter, EditorRequired] public string Name { get; set; } = string.Empty;
+
+    [Parameter] public string? Value { get; set; }
+
+    [Parameter] public string? Placeholder { get; set; }
+
+    [Parameter] public string Autocomplete { get; set; } = "off";
+
+    [Parameter] public string ButtonAriaLabel { get; set; } = "Zoeken";
+
+    [Parameter] public InputSize Size { get; set; } = InputSize.Md;
+
+    [Parameter] public IReadOnlyDictionary<string, object>? InputAttributes { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}
