@@ -12,24 +12,26 @@
     <link rel="stylesheet" href="/css/site.css" />
 </head>
 <body>
-    <GdsAppShell Title="Galileo Design System" Subtitle="Pattern library" NavTitle="Navigation">
-        <NavItems>
-            <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="@IsActive("/Home/Index")" />
-            <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" Active="@IsActive("/Home/Atoms")" />
-            <GdsNavItem Icon="menu" Text="Molecules" Link="/Home/Molecules" Active="@IsActive("/Home/Molecules")" />
-            <GdsNavItem Icon="menu" Text="Organisms" Link="/Home/Organisms" Active="@IsActive("/Home/Organisms")" />
-            <GdsNavItem Icon="folder" Text="Projecten" Link="/Home/Projects" Active="@IsActive("/Home/Projects")" />
-        </NavItems>
+    <GdsDialogHost>
+        <GdsAppShell Title="Galileo Design System" Subtitle="Pattern library" NavTitle="Navigation">
+            <NavItems>
+                <GdsNavItem Icon="home" Text="Home" Link="/Home/Index" Active="@IsActive("/Home/Index")" />
+                <GdsNavItem Icon="menu" Text="Atoms" Link="/Home/Atoms" Active="@IsActive("/Home/Atoms")" />
+                <GdsNavItem Icon="menu" Text="Molecules" Link="/Home/Molecules" Active="@IsActive("/Home/Molecules")" />
+                <GdsNavItem Icon="menu" Text="Organisms" Link="/Home/Organisms" Active="@IsActive("/Home/Organisms")" />
+                <GdsNavItem Icon="folder" Text="Projecten" Link="/Home/Projects" Active="@IsActive("/Home/Projects")" />
+            </NavItems>
 
-        <Actions>
-            <GdsIconButton Icon="search" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Zoeken" Href="/Home/Atoms" />
-            <GdsIconButton Icon="settings" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Instellingen" Href="/Home/Organisms" />
-        </Actions>
+            <Actions>
+                <GdsIconButton Icon="search" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Zoeken" Href="/Home/Atoms" />
+                <GdsIconButton Icon="settings" Type="@IconButtonType.Outline" Variant="@IconButtonVariant.Secondary" AriaLabel="Instellingen" Href="/Home/Organisms" />
+            </Actions>
 
-        <ChildContent>
-            @ChildContent
-        </ChildContent>
-    </GdsAppShell>
+            <ChildContent>
+                @ChildContent
+            </ChildContent>
+        </GdsAppShell>
+    </GdsDialogHost>
     <script defer src="/_content/Galileo.DesignSystem/js/design-system.js"></script>
 </body>
 </html>

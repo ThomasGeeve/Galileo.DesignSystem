@@ -1,0 +1,13 @@
+@namespace Galileo.DesignSystem.Organisms
+
+<div class="gds-dialog-host"
+     data-gds-dialog-host
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+}

@@ -5,6 +5,38 @@
 
   // Dialog behavior
   const openerByDialog = new WeakMap();
+  const dialogStackByHost = new WeakMap();
+  const fallbackDialogHost = {};
+
+  function getDialogHost(dialog) {
+    return dialog?.closest('[data-gds-dialog-host]') || fallbackDialogHost;
+  }
+
+  function getDialogStack(dialog) {
+    const host = getDialogHost(dialog);
+    let stack = dialogStackByHost.get(host);
+
+    if (!stack) {
+      stack = [];
+      dialogStackByHost.set(host, stack);
+    }
+
+    return stack;
+  }
+
+  function removeFromDialogStack(dialog) {
+    const stack = getDialogStack(dialog);
+    const index = stack.lastIndexOf(dialog);
+
+    if (index >= 0) {
+      stack.splice(index, 1);
+    }
+  }
+
+  function isTopDialog(dialog) {
+    const stack = getDialogStack(dialog);
+    return stack.length === 0 || stack[stack.length - 1] === dialog;
+  }
 
   function isDialog(element) {
     return element instanceof HTMLDialogElement && element.hasAttribute('data-gds-dialog');
@@ -29,6 +61,7 @@
     if (dialog.open) {
       dialog.close();
     } else {
+      removeFromDialogStack(dialog);
       restoreFocus(dialog);
     }
   }
@@ -37,7 +70,16 @@
     // Use the native modal dialog API so focus and backdrop behavior remain browser-managed.
     if (!dialog.open && typeof dialog.showModal === 'function') {
       openerByDialog.set(dialog, opener);
-      dialog.showModal();
+      const stack = getDialogStack(dialog);
+      stack.push(dialog);
+
+      try {
+        dialog.showModal();
+      } catch (error) {
+        removeFromDialogStack(dialog);
+        openerByDialog.delete(dialog);
+        throw error;
+      }
     }
   }
 
@@ -291,7 +333,7 @@
     }
 
     const dialog = event.target;
-    if (isDialog(dialog) && dialog.open && event.target === dialog && isDismissible(dialog)) {
+    if (isDialog(dialog) && dialog.open && event.target === dialog && isTopDialog(dialog) && isDismissible(dialog)) {
       closeDialog(dialog);
     }
   });
@@ -336,6 +378,11 @@
       return;
     }
 
+    if (!isTopDialog(dialog)) {
+      event.preventDefault();
+      return;
+    }
+
     if (!isDismissible(dialog)) {
       event.preventDefault();
       return;
@@ -350,6 +397,7 @@
     const dialog = event.target;
 
     if (isDialog(dialog)) {
+      removeFromDialogStack(dialog);
       restoreFocus(dialog);
     }
   }, true);

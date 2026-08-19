@@ -2,42 +2,67 @@
 
 <Showcase Title="Dialog" Description="Een modal voor gerichte acties, informatie of bevestiging." Source="@Source">
     <div class="demo-row">
-        <GdsButton data-gds-dialog-open="dialog-overview-example">
-            Open dialog
+        <GdsButton data-gds-dialog-open="dialog-host-example">
+            Open DialogHost-demo
         </GdsButton>
     </div>
 
-    <GdsDialog Id="dialog-overview-example" Title="Profiel bijwerken">
+    <GdsDialog Id="dialog-host-example" Title="Gegevens bekijken">
         <ChildContent>
-            <p>Pas je profielgegevens aan. De wijzigingen worden pas opgeslagen na bevestiging.</p>
+            <GdsText>
+                De DialogHost beheert deze dialog, terwijl GdsDialog de header, body en footer rendert.
+            </GdsText>
+            <br />
+            <GdsText>
+                <strong>Voorbeelddata:</strong> een algemene demonstratie van content binnen de dialog.
+            </GdsText>
         </ChildContent>
 
         <Footer>
             <GdsButton Type="@ButtonType.Outline"
                        Variant="@ButtonVariant.Tertiary"
-                       data-gds-dialog-close="">
-                Annuleren
+                       data-gds-dialog-open="dialog-host-second">
+                Open tweede dialog
             </GdsButton>
             <GdsButton data-gds-dialog-close="">
-                Opslaan
+                Sluiten
             </GdsButton>
+        </Footer>
+    </GdsDialog>
+
+    <GdsDialog Id="dialog-host-second" Title="Tweede dialog" Dismissible="false">
+        <ChildContent>
+            <GdsText>
+                De eerste dialog blijft geopend onder deze dialog.
+            </GdsText>
+            <br />
+            <GdsText>
+                Sluit deze dialog om terug te keren naar de oorspronkelijke dialog.
+            </GdsText>
+        </ChildContent>
+
+        <Footer>
+            <GdsButton data-gds-dialog-close="">Terug</GdsButton>
         </Footer>
     </GdsDialog>
 </Showcase>
 
 @code {
     private const string Source = """
-        <GdsButton data-gds-dialog-open="profile-dialog">
-            Open dialog
-        </GdsButton>
+        <GdsDialogHost>
+            <GdsButton data-gds-dialog-open="generic-dialog">
+                Open dialog
+            </GdsButton>
 
-        <GdsDialog Id="profile-dialog" Title="Profiel bijwerken">
-            <p>Pas je profielgegevens aan.</p>
+            <GdsDialog Id="generic-dialog" Title="Gegevens bekijken">
+                <ChildContent>
+                    <p>Dialog body content.</p>
+                </ChildContent>
 
-            <Footer>
-                <GdsButton data-gds-dialog-close="">Annuleren</GdsButton>
-                <GdsButton data-gds-dialog-close="">Opslaan</GdsButton>
-            </Footer>
-        </GdsDialog>
+                <Footer>
+                    <GdsButton data-gds-dialog-close>Sluiten</GdsButton>
+                </Footer>
+            </GdsDialog>
+        </GdsDialogHost>
         """;
 }
